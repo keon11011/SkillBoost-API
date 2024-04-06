@@ -38,3 +38,26 @@ CREATE TABLE TaiKhoan(
     ChinhSuaLanCuoiVaoLuc DATETIME NOT NULL,
     ChinhSuaLanCuoiBoi INT NOT NULL
 );
+
+/* TẠO TABLE KhoaHoc */
+-- mquan check lại nha
+CREATE TABLE KhoaHoc(
+    MaKhoaHoc VARCHAR(10) NOT NULL PRIMARY KEY,
+    TenKhoaHoc VARCHAR(100) NOT NULL,
+    MoTaKhoaHoc TEXT NOT NULL,
+    ThoiLuongKhoaHoc VARCHAR(20) NOT NULL,
+    GiangVien VARCHAR(20) NOT NULL,
+    MucDoKhoaHoc VARCHAR(30) NOT NULL,
+    SoLuongHocVienToiDa INT NOT NULL,
+    GiaTien INT NOT NULL,
+    NgayKhaiGiang DATE NOT NULL,
+    NgayBeGiang DATE NOT NULL,
+    DanhGiaKhoaHoc FLOAT NOT NULL,
+    TrangThaiKhoaHoc VARCHAR(30) NOT NULL,
+    MaLoaiKhoaHoc VARCHAR(13) NOT NULL,
+    TaoVaoLuc DATETIME NOT NULL,
+    TaoBoi VARCHAR(20) NOT NULL,
+    ChinhSuaLanCuoiVaoLuc DATETIME NOT NULL,
+    ChinhSuaLanCuoiBoi VARCHAR(20) NOT NULL
+);
+
