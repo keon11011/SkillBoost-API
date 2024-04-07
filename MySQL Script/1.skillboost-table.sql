@@ -203,3 +203,105 @@ CREATE TABLE HoatDongKH(
   ,TaoVaoLuc         DATETIME  NOT NULL
 );
 -- DROP TABLE HoatDongKH;
+
+CREATE TABLE KhoaHoc(
+   MaKhoaHoc             VARCHAR(255) NOT NULL PRIMARY KEY
+  ,TenKhoaHoc            VARCHAR(255) NOT NULL
+  ,MoTaNgan              TEXT NOT NULL
+  ,MoTaDai               LONGTEXT NOT NULL
+  ,ThoiLuongKhoaHoc      INT  NOT NULL
+  ,SoBaiViet             INT  NOT NULL
+  ,SoFileTaiXuong        INT  NOT NULL
+  ,GiangVien             VARCHAR(255) NOT NULL
+  ,MucDoKhoaHoc          VARCHAR(255) NOT NULL
+  ,LuotDanhGia           INT  NOT NULL
+  ,SoLuongHocVienToiDa   INT  NOT NULL
+  ,SoLuongHocVienConLai  INT  NOT NULL
+  ,GiaTien               INT  NOT NULL
+  ,NgayKhaiGiang         DATE  NOT NULL
+  ,NgayBeGiang           DATE  NOT NULL
+  ,DanhGiaKhoaHoc        FLOAT  NOT NULL
+  ,TrangThaiKhoaHoc      VARCHAR(255) NOT NULL
+  ,MaLoaiKhoaHoc         VARCHAR(255) NOT NULL
+  ,TaoVaoLuc             DATETIME  NOT NULL
+  ,TaoBoi                VARCHAR(255) NOT NULL
+  ,ChinhSuaLanCuoiVaoLuc DATETIME  NOT NULL
+  ,ChinhSuaLanCuoiBoi    VARCHAR(255) NOT NULL
+);
+-- DROP TABLE KhoaHoc;
+
+CREATE TABLE LoaiKhoaHoc(
+   MaLoaiKhoaHoc         VARCHAR(255) NOT NULL PRIMARY KEY
+  ,TenLoaiKhoaHoc        VARCHAR(255) NOT NULL
+  ,TrangThaiLoaiKhoaHoc  VARCHAR(255) NOT NULL
+  ,TaoVaoLuc             DATETIME  NOT NULL
+  ,TaoBoi                VARCHAR(255) NOT NULL
+  ,ChinhSuaLanCuoiVaoLuc DATETIME  NOT NULL
+  ,ChinhSuaLanCuoiBoi    VARCHAR(255) NOT NULL
+);
+-- DROP TABLE LoaiKhoaHoc;
+
+CREATE TABLE LichHoc(
+   ID                     INT AUTO_INCREMENT PRIMARY KEY
+  ,MaKhoaHoc              VARCHAR(255) NOT NULL
+  ,ThuTrongTuan           VARCHAR(255) NOT NULL
+  ,ThoiGianBatDauBuoiHoc  VARCHAR(255) NOT NULL
+  ,ThoiGianKetThucBuoiHoc VARCHAR(255) NOT NULL
+  ,TaoVaoLuc              DATETIME  NOT NULL
+  ,TaoBoi                 VARCHAR(255) NOT NULL
+  ,ChinhSuaLanCuoiVaoLuc  DATETIME  NOT NULL
+  ,ChinhSuaLanCuoiBoi     VARCHAR(255) NOT NULL
+);
+-- DROP TABLE LichHoc;
+
+CREATE TABLE Email(
+   MaEmail               VARCHAR(255) NOT NULL PRIMARY KEY
+  ,TieuDeEmail           VARCHAR(255) NOT NULL
+  ,NoiDungEmail          LONGTEXT  NOT NULL
+  ,LichGuiEmail          DATETIME  NOT NULL
+  ,NguoiNhan             VARCHAR(255) NOT NULL
+  ,TrangThaiEmail        VARCHAR(255) NOT NULL
+  ,MaYCTV                VARCHAR(255)
+  ,MaBaoGia              VARCHAR(255)
+  ,MaHoaDon              VARCHAR(255)
+  ,MaEmailMau            VARCHAR(255) NOT NULL
+  ,TaoVaoLuc             DATETIME  NOT NULL
+  ,TaoBoi                VARCHAR(255) NOT NULL
+  ,ChinhSuaLanCuoiVaoLuc DATETIME  NOT NULL
+  ,ChinhSuaLanCuoiBoi    VARCHAR(255) NOT NULL
+);
+-- DROP TABLE Email;
+
+CREATE TABLE EmailMau(
+   MaEmailMau            VARCHAR(255) NOT NULL PRIMARY KEY
+  ,TieuDeEmailMau        VARCHAR(255) NOT NULL
+  ,MoTaEmailMau          VARCHAR(255) NOT NULL
+  ,NoiDungEmailMau       LONGTEXT NOT NULL
+  ,TrangThaiEmailMau     VARCHAR(255) NOT NULL
+  ,TaoVaoLuc             DATETIME  NOT NULL
+  ,TaoBoi                VARCHAR(255) NOT NULL
+  ,ChinhSuaLanCuoiVaoLuc DATETIME  NOT NULL
+  ,ChinhSuaLanCuoiBoi    VARCHAR(255) NOT NULL
+);
+-- DROP TABLE EmailMau;
+
+CREATE TABLE HoaDon(
+   MaHoaDon          VARCHAR(255) NOT NULL PRIMARY KEY
+  ,MoTaHoaDon        LONGTEXT NOT NULL
+  ,TenKH             VARCHAR(255) NOT NULL
+  ,ThoiDiemThanhToan DATETIME  NOT NULL
+  ,TongHoaDon        INT  NOT NULL
+  ,MaBaoGia          VARCHAR(255) NOT NULL
+  ,TaoVaoLuc         DATETIME  NOT NULL
+  ,TaoBoi            VARCHAR(255) NOT NULL
+);
+-- DROP TABLE Email;
+
+CREATE TABLE ChiTietKhoaHocThuocHoaDon(
+   MaHoaDon   VARCHAR(255) NOT NULL PRIMARY KEY
+  ,MaKhoaHoc  VARCHAR(255) NOT NULL
+  ,TenKhoaHoc VARCHAR(255) NOT NULL
+  ,GiangVien  VARCHAR(255) NOT NULL
+  ,GiaTien    INT  NOT NULL
+);
+-- DROP TABLE ChiTietKhoaHocThuocHoaDon;
