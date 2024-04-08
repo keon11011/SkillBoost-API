@@ -1,5 +1,4 @@
 /* TẠO DATABASE SkillBoost */
-;
 CREATE DATABASE SkillBoost
 
 ; 
@@ -10,7 +9,7 @@ USE SkillBoost
 ;
 
 CREATE TABLE NhanVien(
-   MaNV                  VARCHAR(255) NOT NULL PRIMARY KEY
+   MaNV                  INT AUTO_INCREMENT NOT NULL PRIMARY KEY
   ,HoTenNV               VARCHAR(255) NOT NULL
   ,GioiTinhNV            VARCHAR(4)
   ,NgaySinhNV            DATE 
@@ -19,28 +18,28 @@ CREATE TABLE NhanVien(
   ,EmailNV               VARCHAR(255) NOT NULL
   ,TrangThaiNV           VARCHAR(255) NOT NULL
   ,TaoVaoLuc             DATETIME NOT NULL
-  ,TaoBoi                VARCHAR(255) NOT NULL
+  ,TaoBoi                INT NOT NULL
   ,ChinhSuaLanCuoiVaoLuc DATETIME NOT NULL
-  ,ChinhSuaLanCuoiBoi    VARCHAR(255) NOT NULL
+  ,ChinhSuaLanCuoiBoi    INT NOT NULL
 );
 -- DROP TABLE NhanVien;
 /* TẠO TABLE TaiKhoan */
 CREATE TABLE TaiKhoan(
-   MaTK                  VARCHAR(255) NOT NULL PRIMARY KEY
+   MaTK                  INT AUTO_INCREMENT NOT NULL PRIMARY KEY
   ,EmailTK               VARCHAR(255) NOT NULL
   ,MatKhauTK             VARCHAR(255) NOT NULL
   ,MaSaltTK 		     VARCHAR(255)
   ,TrangThaiTK           VARCHAR(255) NOT NULL
-  ,MaNV                  VARCHAR(255) NOT NULL
+  ,MaNV                  INT NOT NULL
   ,TaoVaoLuc             DATETIME  NOT NULL
-  ,TaoBoi                VARCHAR(255) NOT NULL
+  ,TaoBoi                INT NOT NULL
   ,ChinhSuaLanCuoiVaoLuc DATETIME  NOT NULL
-  ,ChinhSuaLanCuoiBoi    VARCHAR(255) NOT NULL
+  ,ChinhSuaLanCuoiBoi    INT NOT NULL
 );
 -- DROP TABLE TaiKhoan;
 
 CREATE TABLE YeuCauTuVan(
-   MaTuVan            VARCHAR(255) NOT NULL PRIMARY KEY
+   MaTuVan            INT AUTO_INCREMENT NOT NULL PRIMARY KEY
   ,TenLeadYeuCau      VARCHAR(255) NOT NULL
   ,NgaySinhLeadYeuCau DATE  NOT NULL
   ,EmailLeadYeuCau    VARCHAR(255) NOT NULL
@@ -48,13 +47,13 @@ CREATE TABLE YeuCauTuVan(
   ,GhiChuYCTV         VARCHAR(255)
   ,TrangThaiYCTV      VARCHAR(255) NOT NULL
   ,TaoVaoLuc          DATETIME  NOT NULL
-  ,TaoBoiLead         VARCHAR(255) NOT NULL
+  ,TaoBoiLead         INT NOT NULL
 );
 -- DROP TABLE YeuCauTuVan;
 
 CREATE TABLE ChiTietKhoaHocThuocYCTV(
-   MaTuVan    VARCHAR(255) NOT NULL
-  ,MaKhoaHoc  VARCHAR(255) NOT NULL
+   MaTuVan    INT NOT NULL
+  ,MaKhoaHoc  INT NOT NULL
   ,TenKhoaHoc VARCHAR(255) NOT NULL
   ,GiangVien  VARCHAR(255) NOT NULL
   ,HocPhi     INT  NOT NULL
@@ -63,68 +62,68 @@ CREATE TABLE ChiTietKhoaHocThuocYCTV(
 -- DROP TABLE ChiTietKhoaHocThuocYCTV;
 
 CREATE TABLE TBL_Lead(
-   MaLead                VARCHAR(255) NOT NULL PRIMARY KEY
+   MaLead                INT AUTO_INCREMENT NOT NULL PRIMARY KEY
   ,HoTenLead             VARCHAR(255) NOT NULL
   ,GioiTinhLead          VARCHAR(255) NOT NULL
   ,NgaySinhLead          DATE  NOT NULL
   ,SoDienThoaiLead       VARCHAR(10) NOT NULL
   ,EmailLead             VARCHAR(255) NOT NULL
-  ,MaNgheNghiep          VARCHAR(255) NOT NULL
+  ,MaNgheNghiep          INT NOT NULL
   ,MaNVPhuTrachLead      VARCHAR(255) NOT NULL
   ,TrangThaiLead         VARCHAR(255) NOT NULL
   ,LyDoTrangThaiLead     VARCHAR(255)
   ,NguonLead             VARCHAR(255) NOT NULL
   ,GhiChuLead            VARCHAR(255)
-  ,LeadTuKHCu            VARCHAR(255)
+  ,LeadTuKHCu            INT
   ,TaoVaoLuc             DATETIME  NOT NULL
-  ,TaoBoi                VARCHAR(255) NOT NULL
+  ,TaoBoi                INT NOT NULL
   ,ChinhSuaLanCuoiVaoLuc DATETIME  NOT NULL
-  ,ChinhSuaLanCuoiBoi    VARCHAR(255) NOT NULL
+  ,ChinhSuaLanCuoiBoi    INT NOT NULL
 );
 
 CREATE TABLE HoatDongLead(
-   MaHDLead            VARCHAR(255) NOT NULL PRIMARY KEY
-  ,MaLead              VARCHAR(255) NOT NULL
+   MaHDLead            INT AUTO_INCREMENT NOT NULL PRIMARY KEY
+  ,MaLead              INT NOT NULL
   ,TenHDLead           VARCHAR(255) NOT NULL
   ,LoaiHDLead          VARCHAR(255) NOT NULL
   ,HDLeadDuocTaoBoi    VARCHAR(255) NOT NULL
-  ,MaNVPhuTrachHDLead  VARCHAR(255) NOT NULL
+  ,MaNVPhuTrachHDLead  INT NOT NULL
   ,TenNVPhuTrachHDLead VARCHAR(255) NOT NULL
-  ,MaEmailDenLead      VARCHAR(255)
+  ,MaEmailDenLead      INT
   ,TaoVaoLuc           DATETIME  NOT NULL
 );
 
 CREATE TABLE NgheNghiep(
-   MaNgheNghiep          VARCHAR(255) NOT NULL PRIMARY KEY
+   MaNgheNghiep          INT AUTO_INCREMENT NOT NULL PRIMARY KEY
   ,TenNgheNghiep         VARCHAR(255) NOT NULL
   ,TrangThaiNgheNghiep   VARCHAR(255) NOT NULL
   ,TaoVaoLuc             DATETIME  NOT NULL
-  ,TaoBoi                VARCHAR(255) NOT NULL
+  ,TaoBoi                INT NOT NULL
   ,ChinhSuaLanCuoiVaoLuc DATETIME  NOT NULL
-  ,ChinhSuaLanCuoiBoi    VARCHAR(255) NOT NULL
+  ,ChinhSuaLanCuoiBoi    INT NOT NULL
 );
 -- DROP TABLE NgheNghiep;
 
 CREATE TABLE BaoGia(
-   MaBaoGia              VARCHAR(255) NOT NULL PRIMARY KEY
+   MaBaoGia              INT AUTO_INCREMENT NOT NULL PRIMARY KEY
   ,TenBaoGia             VARCHAR(255) NOT NULL
-  ,MaLead                VARCHAR(255) NOT NULL
+  ,MaLead                INT NOT NULL
   ,HoTenLead             VARCHAR(255) NOT NULL
-  ,TongTienTruocGiam     INT  NOT NULL
-  ,MaGiamGia             VARCHAR(255)
+  ,TongTienTruocGiam     INT NOT NULL
+  ,MaGiamGia             INT
   ,PhamTramGiamGIa       INT 
-  ,TongTien              INT  NOT NULL
+  ,TongTien              INT NOT NULL
   ,TrangThaiBaoGia       VARCHAR(255) NOT NULL
   ,TaoVaoLuc             DATETIME  NOT NULL
-  ,TaoBoi                VARCHAR(255) NOT NULL
+  ,TaoBoi                INT NOT NULL
   ,ChinhSuaLanCuoiVaoLuc DATETIME  NOT NULL
-  ,ChinhSuaLanCuoiBoi    VARCHAR(255) NOT NULL
+  ,ChinhSuaLanCuoiBoi    INT NOT NULL
 );
 -- DROP TABLE BaoGia;
 
 CREATE TABLE ChiTietKhoaHocThuocBaoGia(
-   MaBaoGia   VARCHAR(255) NOT NULL
-  ,MaKhoaHoc  VARCHAR(255) NOT NULL
+   MaBaoGia   INT NOT NULL
+  ,MaKhoaHoc  INT NOT NULL
   ,TenKhoaHoc VARCHAR(255) NOT NULL
   ,GiangVien  VARCHAR(255) NOT NULL
   ,GiaTien    INT  NOT NULL
@@ -133,7 +132,7 @@ CREATE TABLE ChiTietKhoaHocThuocBaoGia(
 -- DROP TABLE ChiTietKhoaHocThuocBaoGia;
 
 CREATE TABLE QuyDinhGiamGia(
-   MaQuyDinhGiamGia        VARCHAR(255) NOT NULL PRIMARY KEY
+   MaQuyDinhGiamGia        INT AUTO_INCREMENT NOT NULL PRIMARY KEY
   ,MoTaLoaiGiamGia         VARCHAR(255) NOT NULL
   ,SoLuongKhoaHocDangKy    INTEGER  NOT NULL
   ,MaNgheNghiep            VARCHAR(255)
