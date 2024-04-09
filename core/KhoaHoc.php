@@ -5,11 +5,16 @@ class KhoaHoc{
 
     public $MaKhoaHoc;
     public $TenKhoaHoc;
-    public $MoTaKhoaHoc;
+    public $MoTaNgan;
+    public $MoTaDai;
     public $ThoiLuongKhoaHoc;
+    public $SoBaiViet;
+    public $SoFileTaiXuong;
     public $GiangVien;
     public $MucDoKhoaHoc;
+    public $LuotDanhGia;
     public $SoLuongHocVienToiDa;
+    public $SoLuongHocVienConLai;
     public $GiaTien;
     public $NgayKhaiGiang;
     public $NgayBeGiang;
@@ -27,7 +32,7 @@ class KhoaHoc{
 
     public function read() {
         try {
-            $query = "SELECT * FROM " . $this->table;
+            $query = "SELECT * FROM " . $this->table . " WHERE TrangThaiKhoaHoc != 'Xóa mềm'";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;

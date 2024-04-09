@@ -10,7 +10,6 @@ class KhachHang{
     public $SoDienThoaiKH;
     public $EmailKH;
     public $MaNgheNghiep;
-    public $TenNgheNghiep;
     public $MaNVPhuTrachKH;
     public $TenNVPhuTrachKH;
     public $TrangThaiKH;
@@ -28,7 +27,7 @@ class KhachHang{
 
     public function read() {
         try {
-            $query = "SELECT * FROM " . $this->table;
+            $query = "SELECT * FROM " . $this->table . " WHERE TrangThaiKH != 'Xóa mềm'";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
@@ -62,7 +61,6 @@ class KhachHang{
         $this->SoDienThoaiKH = $row['SoDienThoaiKH'];
         $this->EmailKH = $row['EmailKH'];
         $this->MaNgheNghiep = $row['MaNgheNghiep'];
-        $this->TenNgheNghiep = $row['TenNgheNghiep'];
         $this->MaNVPhuTrachKH = $row['MaNVPhuTrachKH'];
         $this->TenNVPhuTrachKH = $row['TenNVPhuTrachKH'];
         $this->TrangThaiKH = $row['TrangThaiKH'];
@@ -82,14 +80,12 @@ class KhachHang{
         // Create query
         $query = "INSERT INTO " . $this->table . "
                   SET
-                    MaKH = :MaKH,
                     HoTenKH = :HoTenKH,
                     GioiTinhKH = :GioiTinhKH,
                     NgaySinhKH = :NgaySinhKH,
                     SoDienThoaiKH = :SoDienThoaiKH,
                     EmailKH = :EmailKH,
                     MaNgheNghiep = :MaNgheNghiep,
-                    TenNgheNghiep = :TenNgheNghiep,
                     MaNVPhuTrachKH = :MaNVPhuTrachKH,
                     TenNVPhuTrachKH = :TenNVPhuTrachKH,
                     TrangThaiKH = :TrangThaiKH,
@@ -106,19 +102,23 @@ class KhachHang{
         $stmt = $this->conn->prepare($query);
 
         // Clean data
-        $this->MaKH = htmlspecialchars(strip_tags($this->MaKH));
         $this->HoTenKH = htmlspecialchars(strip_tags($this->HoTenKH));
         $this->GioiTinhKH = htmlspecialchars(strip_tags($this->GioiTinhKH));
         $this->NgaySinhKH = date('Y-m-d', strtotime($this->NgaySinhKH));
         $this->SoDienThoaiKH = htmlspecialchars(strip_tags($this->SoDienThoaiKH));
         $this->EmailKH = htmlspecialchars(strip_tags($this->EmailKH));
         $this->MaNgheNghiep = htmlspecialchars(strip_tags($this->MaNgheNghiep));
-        $this->TenNgheNghiep = htmlspecialchars(strip_tags($this->TenNgheNghiep));
         $this->MaNVPhuTrachKH = htmlspecialchars(strip_tags($this->MaNVPhuTrachKH));
         $this->TenNVPhuTrachKH = htmlspecialchars(strip_tags($this->TenNVPhuTrachKH));
         $this->TrangThaiKH = htmlspecialchars(strip_tags($this->TrangThaiKH));
-        $this->LyDoTrangThaiKH = htmlspecialchars(strip_tags($this->LyDoTrangThaiKH));
-        $this->GhiChuKH = htmlspecialchars(strip_tags($this->GhiChuKH));
+        // dòng này assigned null
+        if ($this->LyDoTrangThaiKH !== null) {
+            $this->LyDoTrangThaiKH = htmlspecialchars(strip_tags($this->LyDoTrangThaiKH));
+        }
+        // dòng này assigned null
+        if ($this->GhiChuKH !== null) {
+            $this->GhiChuKH = htmlspecialchars(strip_tags($this->GhiChuKH));
+        }
         // dòng này assigned null
         if ($this->ChuyenDoiTuMaLead !== null) {
             $this->ChuyenDoiTuMaLead = htmlspecialchars(strip_tags($this->ChuyenDoiTuMaLead));
@@ -129,14 +129,12 @@ class KhachHang{
         $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
 
         // Bind data
-        $stmt->bindParam(':MaKH', $this->MaKH);
         $stmt->bindParam(':HoTenKH', $this->HoTenKH);
         $stmt->bindParam(':GioiTinhKH', $this->GioiTinhKH);
         $stmt->bindParam(':NgaySinhKH', $this->NgaySinhKH);
         $stmt->bindParam(':SoDienThoaiKH', $this->SoDienThoaiKH);
         $stmt->bindParam(':EmailKH', $this->EmailKH);
         $stmt->bindParam(':MaNgheNghiep', $this->MaNgheNghiep);
-        $stmt->bindParam(':TenNgheNghiep', $this->TenNgheNghiep);
         $stmt->bindParam(':MaNVPhuTrachKH', $this->MaNVPhuTrachKH);
         $stmt->bindParam(':TenNVPhuTrachKH', $this->TenNVPhuTrachKH);
         $stmt->bindParam(':TrangThaiKH', $this->TrangThaiKH);

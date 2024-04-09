@@ -17,28 +17,26 @@ $yeuCauTuVan = new YeuCauTuVan($db);
 $data = json_decode(file_get_contents("php://input"));
 
 // Check if required data is set
-if (!isset($data->MaTuVan, $data->TenLeadYeuCau, $data->NgaySinhLeadYeuCau, $data->EmailLeadYeuCau, $data->SDTLeadYeuCau, $data->TrangThaiYCTV)) {
+if (!isset($data->TenLeadYeuCau, $data->NgaySinhLeadYeuCau, $data->EmailLeadYeuCau, $data->SDTLeadYeuCau, $data->TaoBoiLead)) {
     echo json_encode(array('message' => 'Missing required data.'));
     exit;
 }
 
 // Set post properties from the received data
-$yeuCauTuVan->MaTuVan = $data->MaTuVan;
 $yeuCauTuVan->TenLeadYeuCau = $data->TenLeadYeuCau;
 $yeuCauTuVan->NgaySinhLeadYeuCau = $data->NgaySinhLeadYeuCau;
 $yeuCauTuVan->EmailLeadYeuCau = $data->EmailLeadYeuCau;
 $yeuCauTuVan->SDTLeadYeuCau = $data->SDTLeadYeuCau;
-$yeuCauTuVan->TrangThaiYCTV = $data->TrangThaiYCTV;
-
-// Optional properties
+$yeuCauTuVan->TrangThaiYCTV = 'Đã tiếp nhận'; // Đang fix cứng
 $yeuCauTuVan->GhiChuYCTV = isset($data->GhiChuYCTV) ? $data->GhiChuYCTV : null;
-$yeuCauTuVan->TaoVaoLuc = date('Y-m-d H:i:s'); // Assuming it's the current date/time
+$yeuCauTuVan->TaoVaoLuc = date('Y-m-d H:i:s'); 
+$yeuCauTuVan->TaoBoiLead = $data->TaoBoiLead;
 
 // Create YeuCauTuVan
 if ($yeuCauTuVan->create()) {
-    echo json_encode(array('message' => 'Successfully created a new record.'));
+    echo json_encode(array('message' => 'Tạo thành công YCTV mới.'));
 } else {
-    echo json_encode(array('message' => 'Failed to create a new record.'));
+    echo json_encode(array('message' => 'Tạo thất bại YCTV mới.'));
 }
 
 // Free the database connection

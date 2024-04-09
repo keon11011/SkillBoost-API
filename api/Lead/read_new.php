@@ -21,7 +21,7 @@ if ($result) {
     echo json_encode(array('MaLead' => $maLead));
 } else {
     // No record found
-    echo json_encode(array('message' => 'No record found.'));
+    echo json_encode(array('message' => 'Không tìm thấy Lead mới nhất.'));
 }
 
 // Free the database connection

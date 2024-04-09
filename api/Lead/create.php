@@ -17,35 +17,34 @@ $lead = new Lead($db);
 $data = json_decode(file_get_contents("php://input"));
 
 // Check if required data is set
-if (!isset($data->MaLead, $data->HoTenLead, $data->GioiTinhLead, $data->NgaySinhLead, $data->SoDienThoaiLead, $data->EmailLead, $data->MaNgheNghiep, $data->TrangThaiLead, $data->NguonLead)) {
+if (!isset($data->HoTenLead, $data->GioiTinhLead, $data->NgaySinhLead, $data->SoDienThoaiLead, $data->EmailLead, $data->MaNgheNghiep, $data->NguonLead)) {
     echo json_encode(array('message' => 'Missing required data.'));
     exit;
 }
 
 // Set post properties from the received data
-$lead->MaLead = $data->MaLead;
 $lead->HoTenLead = $data->HoTenLead;
 $lead->GioiTinhLead = $data->GioiTinhLead;
 $lead->NgaySinhLead = $data->NgaySinhLead;
 $lead->SoDienThoaiLead = $data->SoDienThoaiLead;
 $lead->EmailLead = $data->EmailLead;
 $lead->MaNgheNghiep = $data->MaNgheNghiep;
-$lead->MaNVPhuTrachLead = 'STA1';
-$lead->TrangThaiLead = $data->TrangThaiLead;
+$lead->MaNVPhuTrachLead = 3; // Đang fix cứng
+$lead->TrangThaiLead = 'Đang tư vấn'; // Đang fix cứng
 $lead->LyDoTrangThaiLead = isset($data->LyDoTrangThaiLead) ? $data->LyDoTrangThaiLead : null;
 $lead->NguonLead = $data->NguonLead;
 $lead->GhiChuLead = isset($data->GhiChuLead) ? $data->GhiChuLead : null;
 $lead->LeadTuKHCu = isset($data->LeadTuKHCu) ? $data->LeadTuKHCu : null;
 $lead->TaoVaoLuc = date('Y-m-d H:i:s');
-$lead->TaoBoi = 'Hệ thống'; // Assuming it's fixed
+$lead->TaoBoi = 1; // Đang fix cứng
 $lead->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
-$lead->ChinhSuaLanCuoiBoi = 'Nguyễn Phương Thanh'; // Assuming it's fixed
+$lead->ChinhSuaLanCuoiBoi = 3; // Đang fix cứng
 
 // Create Lead
 if ($lead->create()) {
-    echo json_encode(array('message' => 'Successfully created a new lead.'));
+    echo json_encode(array('message' => 'Tạo thành công Lead mới.'));
 } else {
-    echo json_encode(array('message' => 'Failed to create a new lead.'));
+    echo json_encode(array('message' => 'Tạo thất bại Lead mới.'));
 }
 
 // Free the database connection
