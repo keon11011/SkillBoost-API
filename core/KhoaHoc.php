@@ -25,6 +25,7 @@ class KhoaHoc{
     public $TaoBoi;
     public $ChinhSuaLanCuoiVaoLuc;
     public $ChinhSuaLanCuoiBoi;
+    //public $MaLead;
 
     public function __construct($db) {
         $this->conn = $db;
@@ -40,6 +41,34 @@ class KhoaHoc{
             // Handle database errors
             echo json_encode(array("error" => $e->getMessage()));
         }
+    }
+
+    public function read_khoahoc_in_yctv(){
+        $query = "
+                    SELECT * 
+                    FROM " . $this->table . "
+                    WHERE MaKhoaHoc IN (
+                        SELECT MaKhoaHoc 
+                        FROM chitietkhoahocthuocyctv 
+                        WHERE MaTuVan IN (
+                            SELECT MaTuVan 
+                            FROM yeucautuvan 
+                            WHERE TaoBoiLead = :MaLead
+                        )
+                    )
+                ";
+        
+        // Prepare the statement
+        $stmt = $this->conn->prepare($query);
+
+        // Bind parameter
+        $stmt->bindParam(':MaLead', $MaLead);
+
+        // Execute query
+        $stmt->execute();
+
+        // Return result set
+        return $stmt;
     }
 }
 ?>

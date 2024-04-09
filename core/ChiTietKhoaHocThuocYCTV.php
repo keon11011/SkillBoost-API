@@ -50,6 +50,32 @@
         
             return false;
         }
+
+        public function delete() {
+            // Create query
+            $query = "DELETE FROM " . $this->table . " WHERE MaTuVan = :MaTuVan";
+            
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+            
+            // Clean data
+            $this->MaTuVan = htmlspecialchars(strip_tags($this->MaTuVan));
+            
+            // Bind data
+            $stmt->bindParam(':MaTuVan', $this->MaTuVan);
+            
+            // Execute query
+            if($stmt->execute()) {
+                return true;
+            }
+            
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+            
+            return false;
+        }
+
+        
         
     }
 ?>
