@@ -1,7 +1,7 @@
 <?php
 class Lead{
     private $conn;
-    private $table = 'lead';
+    private $table = 'tbl_lead';
 
     public $MaLead;
     public $HoTenLead;
@@ -20,6 +20,8 @@ class Lead{
     public $TaoBoi;
     public $ChinhSuaLanCuoiVaoLuc;
     public $ChinhSuaLanCuoiBoi;
+    public $TenNgheNghiep;
+    public $HoTenNV;
 
     public function __construct($db) {
         $this->conn = $db;
@@ -39,7 +41,14 @@ class Lead{
 
     public function read_single(){
         // Define the query
-        $query = "SELECT * FROM " . $this->table . " WHERE MaLead = :MaLead";
+        // $query = "SELECT * FROM " . $this->table . " WHERE MaLead = :MaLead";
+        $query = "SELECT l.*, o.TenNgheNghiep, s.HoTenNV 
+                    FROM " . $this->table . " AS l 
+                    JOIN nghenghiep AS o ON l.MaNgheNghiep = o.MaNgheNghiep 
+                    JOIN nhanvien AS s ON l.MaNVPhuTrachLead = s.MaNV 
+                    WHERE l.MaLead = :MaLead";
+
+
     
         // Prepare the query statement
         $stmt = $this->conn->prepare($query);
@@ -71,38 +80,55 @@ class Lead{
         $this->TaoBoi = $row['TaoBoi'];
         $this->ChinhSuaLanCuoiVaoLuc = $row['ChinhSuaLanCuoiVaoLuc'];
         $this->ChinhSuaLanCuoiBoi = $row['ChinhSuaLanCuoiBoi'];
+        $this->TenNgheNghiep = $row['TenNgheNghiep'];
+        $this->HoTenNV = $row['HoTenNV'];
     
         // Return the fetched user data
         return $row;
+    }
+
+    public function read_new(){
+        // Define the query
+        $query = "SELECT MaLead FROM " . $this->table . " ORDER BY MaLead DESC LIMIT 1";
+
+        // Prepare the query statement
+        $stmt = $this->conn->prepare($query);
+
+        // Execute the query
+        $stmt->execute();
+
+        // Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Return the fetched result
+        return $result;
     }
         
     public function create() {
         // Define the query
         $query = "INSERT INTO " . $this->table . "
                   SET
-                    MaLead = :MaLead,
-                    HoTenLead = :HoTenLead,
-                    GioiTinhLead = :GioiTinhLead,
-                    NgaySinhLead = :NgaySinhLead,
-                    SoDienThoaiLead = :SoDienThoaiLead,
-                    EmailLead = :EmailLead,
-                    MaNgheNghiep = :MaNgheNghiep,
-                    MaNVPhuTrachLead = :MaNVPhuTrachLead,
-                    TrangThaiLead = :TrangThaiLead,
-                    LyDoTrangThaiLead = :LyDoTrangThaiLead,
-                    NguonLead = :NguonLead,
-                    GhiChuLead = :GhiChuLead,
-                    LeadTuKHCu = :LeadTuKHCu,
-                    TaoVaoLuc = :TaoVaoLuc,
-                    TaoBoi = :TaoBoi,
-                    ChinhSuaLanCuoiVaoLuc = :ChinhSuaLanCuoiVaoLuc,
-                    ChinhSuaLanCuoiBoi = :ChinhSuaLanCuoiBoi";
+                  HoTenLead = :HoTenLead,
+                  GioiTinhLead = :GioiTinhLead,
+                  NgaySinhLead = :NgaySinhLead,
+                  SoDienThoaiLead = :SoDienThoaiLead,
+                  EmailLead = :EmailLead,
+                  MaNgheNghiep = :MaNgheNghiep,
+                  MaNVPhuTrachLead = :MaNVPhuTrachLead,
+                  TrangThaiLead = :TrangThaiLead,
+                  LyDoTrangThaiLead = :LyDoTrangThaiLead,
+                  NguonLead = :NguonLead,
+                  GhiChuLead = :GhiChuLead,
+                  LeadTuKHCu = :LeadTuKHCu,
+                  TaoVaoLuc = :TaoVaoLuc,
+                  TaoBoi = :TaoBoi,
+                  ChinhSuaLanCuoiVaoLuc = :ChinhSuaLanCuoiVaoLuc,
+                  ChinhSuaLanCuoiBoi = :ChinhSuaLanCuoiBoi";
     
         // Prepare statement
         $stmt = $this->conn->prepare($query);
     
         // Clean data
-        $this->MaLead = htmlspecialchars(strip_tags($this->MaLead));
         $this->HoTenLead = htmlspecialchars(strip_tags($this->HoTenLead));
         $this->GioiTinhLead = htmlspecialchars(strip_tags($this->GioiTinhLead));
         $this->NgaySinhLead = date('Y-m-d', strtotime($this->NgaySinhLead));
@@ -130,7 +156,6 @@ class Lead{
         $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
     
         // Bind data
-        $stmt->bindParam(':MaLead', $this->MaLead);
         $stmt->bindParam(':HoTenLead', $this->HoTenLead);
         $stmt->bindParam(':GioiTinhLead', $this->GioiTinhLead);
         $stmt->bindParam(':NgaySinhLead', $this->NgaySinhLead);
@@ -243,7 +268,7 @@ class Lead{
     
         // Clean data
         $this->TrangThaiLead = htmlspecialchars(strip_tags($this->TrangThaiLead));
-        //$this->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s', strtotime($this->ChinhSuaLanCuoiVaoLuc));
+        $this->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
         $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
         $this->MaLead = htmlspecialchars(strip_tags($this->MaLead));
     
@@ -263,5 +288,6 @@ class Lead{
     
         return false;
     }
+    
 }
 ?>

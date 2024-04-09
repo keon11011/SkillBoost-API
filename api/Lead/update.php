@@ -28,20 +28,20 @@ $lead->NgaySinhLead = $data->NgaySinhLead;
 $lead->SoDienThoaiLead = $data->SoDienThoaiLead;
 $lead->EmailLead = $data->EmailLead;
 $lead->MaNgheNghiep = $data->MaNgheNghiep;
-$lead->MaNVPhuTrachLead = 'STA1';
-$lead->TrangThaiLead = $data->TrangThaiLead;
+$lead->MaNVPhuTrachLead = 3; // Đang fix cứng
+$lead->TrangThaiLead = 'Đang tư vấn'; // Đang fix cứng
 $lead->LyDoTrangThaiLead = isset($data->LyDoTrangThaiLead) ? $data->LyDoTrangThaiLead : null;
 $lead->NguonLead = $data->NguonLead;
 $lead->GhiChuLead = isset($data->GhiChuLead) ? $data->GhiChuLead : null;
 $lead->LeadTuKHCu = isset($data->LeadTuKHCu) ? $data->LeadTuKHCu : null;
 $lead->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
-$lead->ChinhSuaLanCuoiBoi = 'Nguyễn Phương Thanh'; // Assuming it's fixed
+$lead->ChinhSuaLanCuoiBoi = 3; // Đang fix cứng
 
 // Update Lead
 if ($lead->update()) {
-    echo json_encode(array('message' => 'Lead updated.'));
+    echo json_encode(array('message' => 'Cập nhật Lead thành công.'));
 } else {
-    echo json_encode(array('message' => 'Lead not updated.'));
+    echo json_encode(array('message' => 'Cập nhật Lead thất bại.'));
 }
 
 // Free the database connection

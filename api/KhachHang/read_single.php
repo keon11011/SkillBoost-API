@@ -24,7 +24,6 @@ $khachhangArray = array(
     'SoDienThoaiKH' => $khachhangData['SoDienThoaiKH'],
     'EmailKH' => $khachhangData['EmailKH'],
     'MaNgheNghiep' => $khachhangData['MaNgheNghiep'],
-    'TenNgheNghiep' => $khachhangData['TenNgheNghiep'],
     'MaNVPhuTrachKH' => $khachhangData['MaNVPhuTrachKH'],
     'TenNVPhuTrachKH' => $khachhangData['TenNVPhuTrachKH'],
     'TrangThaiKH' => $khachhangData['TrangThaiKH'],

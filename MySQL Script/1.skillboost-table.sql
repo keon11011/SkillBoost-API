@@ -183,7 +183,7 @@ CREATE TABLE KhachHang(
   ,TrangThaiKH           VARCHAR(255) NOT NULL
   ,LyDoTrangThaiKH       VARCHAR(255)
   ,GhiChuKH              VARCHAR(255)
-  ,ChuyenDoiTuMaLead     INT NOT NULL
+  ,ChuyenDoiTuMaLead     INT 
   ,TaoVaoLuc             DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP
   ,TaoBoi                INT NOT NULL
   ,ChinhSuaLanCuoiVaoLuc DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP

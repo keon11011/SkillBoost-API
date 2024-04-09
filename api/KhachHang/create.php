@@ -17,30 +17,28 @@ $khachhang = new KhachHang($db);
 $data = json_decode(file_get_contents("php://input"));
 
 // Check if required data is set
-if (!isset($data->MaKH, $data->HoTenKH, $data->GioiTinhKH, $data->NgaySinhKH, $data->SoDienThoaiKH, $data->EmailKH, $data->MaNgheNghiep, $data->TenNgheNghiep, $data->GhiChuKH)) {
+if (!isset($data->HoTenKH, $data->GioiTinhKH, $data->NgaySinhKH, $data->SoDienThoaiKH, $data->EmailKH, $data->MaNgheNghiep)) {
     echo json_encode(array('message' => 'Missing required data.'));
     exit;
 }
 
 // Set post properties from the received data
-$khachhang->MaKH = $data->MaKH;
 $khachhang->HoTenKH = $data->HoTenKH;
 $khachhang->GioiTinhKH = $data->GioiTinhKH;
 $khachhang->NgaySinhKH = $data->NgaySinhKH;
 $khachhang->SoDienThoaiKH = $data->SoDienThoaiKH;
 $khachhang->EmailKH = $data->EmailKH;
 $khachhang->MaNgheNghiep = $data->MaNgheNghiep;
-$khachhang->TenNgheNghiep = $data->TenNgheNghiep;
-$khachhang->MaNVPhuTrachKH = 'STA1'; // Đang fix cứng
+$khachhang->MaNVPhuTrachKH = 3; // Đang fix cứng
 $khachhang->TenNVPhuTrachKH = 'Nguyễn Phương Thanh'; // Đang fix cứng
-$khachhang->TrangThaiKH = 'Đang hoạt động'; 
-$khachhang->LyDoTrangThaiKH = 'Đã mua khóa học'; 
-$khachhang->GhiChuKH = $data->GhiChuKH;
-$khachhang->ChuyenDoiTuMaLead = null; // Đang fix cứng
+$khachhang->TrangThaiKH = 'Đang hoạt động'; // Đang fix cứng
+$khachhang->LyDoTrangThaiKH = isset($data->LyDoTrangThaiKH) ? $data->LyDoTrangThaiKH : null;
+$khachhang->GhiChuKH = isset($data->GhiChuKH) ? $data->GhiChuKH : null;
+$khachhang->ChuyenDoiTuMaLead = isset($data->ChuyenDoiTuMaLead) ? $data->ChuyenDoiTuMaLead : null;
 $khachhang->TaoVaoLuc = date('Y-m-d H:i:s');
-$khachhang->TaoBoi = 'Hệ thống'; // Đang fix cứng
+$khachhang->TaoBoi = 1; // Đang fix cứng
 $khachhang->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
-$khachhang->ChinhSuaLanCuoiBoi = 'Nguyễn Phương Thanh'; // Đang fix cứng
+$khachhang->ChinhSuaLanCuoiBoi = 3; // Đang fix cứng
 
 // Create KhachHang
 if ($khachhang->create()) {
