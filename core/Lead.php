@@ -256,7 +256,7 @@ class Lead{
         $stmt = $this->conn->prepare($query);
     
         // Clean data
-        $this->TrangThaiLead = 'Xóa mềm';
+        $this->TrangThaiLead = htmlspecialchars(strip_tags($this->TrangThaiLead));
         $this->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
         $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
         $this->MaLead = htmlspecialchars(strip_tags($this->MaLead));
