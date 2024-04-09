@@ -75,6 +75,23 @@ class Lead{
         // Return the fetched user data
         return $row;
     }
+
+    public function read_new(){
+        // Define the query
+        $query = "SELECT MaLead FROM " . $this->table . " ORDER BY MaLead DESC LIMIT 1";
+
+        // Prepare the query statement
+        $stmt = $this->conn->prepare($query);
+
+        // Execute the query
+        $stmt->execute();
+
+        // Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Return the fetched result
+        return $result;
+    }
         
     public function create() {
         // Define the query
