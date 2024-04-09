@@ -33,7 +33,9 @@ $leadArray = array(
     'TaoVaoLuc' => $leadData['TaoVaoLuc'],
     'TaoBoi' => $leadData['TaoBoi'],
     'ChinhSuaLanCuoiVaoLuc' => $leadData['ChinhSuaLanCuoiVaoLuc'],
-    'ChinhSuaLanCuoiBoi' => $leadData['ChinhSuaLanCuoiBoi']
+    'ChinhSuaLanCuoiBoi' => $leadData['ChinhSuaLanCuoiBoi'],
+    'TenNgheNghiep' => $leadData['TenNgheNghiep'],
+    'HoTenNV' => $leadData['HoTenNV']
 );
 
 // Output the Lead array as JSON and exit

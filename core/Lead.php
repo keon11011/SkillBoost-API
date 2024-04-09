@@ -20,6 +20,8 @@ class Lead{
     public $TaoBoi;
     public $ChinhSuaLanCuoiVaoLuc;
     public $ChinhSuaLanCuoiBoi;
+    public $TenNgheNghiep;
+    public $HoTenNV;
 
     public function __construct($db) {
         $this->conn = $db;
@@ -39,7 +41,14 @@ class Lead{
 
     public function read_single(){
         // Define the query
-        $query = "SELECT * FROM " . $this->table . " WHERE MaLead = :MaLead";
+        // $query = "SELECT * FROM " . $this->table . " WHERE MaLead = :MaLead";
+        $query = "SELECT l.*, o.TenNgheNghiep, s.HoTenNV 
+                    FROM " . $this->table . " AS l 
+                    JOIN nghenghiep AS o ON l.MaNgheNghiep = o.MaNgheNghiep 
+                    JOIN nhanvien AS s ON l.MaNVPhuTrachLead = s.MaNV 
+                    WHERE l.MaLead = :MaLead";
+
+
     
         // Prepare the query statement
         $stmt = $this->conn->prepare($query);
@@ -71,6 +80,8 @@ class Lead{
         $this->TaoBoi = $row['TaoBoi'];
         $this->ChinhSuaLanCuoiVaoLuc = $row['ChinhSuaLanCuoiVaoLuc'];
         $this->ChinhSuaLanCuoiBoi = $row['ChinhSuaLanCuoiBoi'];
+        $this->TenNgheNghiep = $row['TenNgheNghiep'];
+        $this->HoTenNV = $row['HoTenNV'];
     
         // Return the fetched user data
         return $row;

@@ -190,6 +190,40 @@ class QuyDinhGiamGia {
         return false;
     }
     
-    
+    public function delete(){
+         // Create query
+        $query = "UPDATE " . $this->table . "
+                    SET
+                    TrangThaiQuyDinhGiamGia = :TrangThaiQuyDinhGiamGia,
+                    ChinhSuaLanCuoiVaoLuc = :ChinhSuaLanCuoiVaoLuc,
+                    ChinhSuaLanCuoiBoi = :ChinhSuaLanCuoiBoi
+                    WHERE
+                    MaQuyDinhGiamGia = :MaQuyDinhGiamGia";
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // Clean data
+        $this->TrangThaiQuyDinhGiamGia = htmlspecialchars(strip_tags($this->TrangThaiQuyDinhGiamGia));
+        $this->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
+        $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
+        $this->MaQuyDinhGiamGia = htmlspecialchars(strip_tags($this->MaQuyDinhGiamGia));
+
+        // Bind data
+        $stmt->bindParam(':TrangThaiQuyDinhGiamGia', $this->TrangThaiQuyDinhGiamGia);
+        $stmt->bindParam(':ChinhSuaLanCuoiVaoLuc', $this->ChinhSuaLanCuoiVaoLuc);
+        $stmt->bindParam(':ChinhSuaLanCuoiBoi', $this->ChinhSuaLanCuoiBoi);
+        $stmt->bindParam(':MaQuyDinhGiamGia', $this->MaQuyDinhGiamGia);
+
+        // Execute query
+        if($stmt->execute()) {
+        return true;
+        }
+
+        // Print error if something goes wrong
+        printf("Error: %s.\n", $stmt->error);
+
+        return false;
+    }
 }
 ?>
