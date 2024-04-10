@@ -117,5 +117,33 @@ class KhoaHoc{
         // Return result set
         return $stmt;
     }
+
+    public function read_khoahoc_in_baogia(){
+        $query = "
+                    SELECT * 
+                    FROM " . $this->table . "
+                    WHERE MaKhoaHoc IN (
+                        SELECT MaKhoaHoc 
+                        FROM chitietkhoahocthuocbaogia 
+                        WHERE MaBaoGia IN (
+                            SELECT MaBaoGia 
+                            FROM baogia 
+                            WHERE MaLead = :MaLead
+                        )
+                    )
+                ";
+        
+        // Prepare the statement
+        $stmt = $this->conn->prepare($query);
+
+        // Bind parameter
+        $stmt->bindParam(':MaLead', $this->MaLead);
+
+        // Execute query
+        $stmt->execute();
+
+        // Return result set
+        return $stmt;
+    }
 }
 ?>

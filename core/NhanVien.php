@@ -22,7 +22,7 @@ class NhanVien{
 
     public function read() {
         try {
-            $query = "SELECT * FROM NhanVien WHERE TrangThaiNV != 'Xóa mềm'";
+            $query = "SELECT * FROM NhanVien WHERE MaNV != 1 AND TrangThaiNV != 'Xóa mềm'";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;

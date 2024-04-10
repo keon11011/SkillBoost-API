@@ -111,7 +111,7 @@ CREATE TABLE BaoGia(
   ,HoTenLead             VARCHAR(255) NOT NULL
   ,TongTienTruocGiam     INT NOT NULL
   ,MaGiamGia             INT
-  ,PhamTramGiamGIa       INT 
+  ,PhanTramGiamGia       INT 
   ,TongTien              INT NOT NULL
   ,TrangThaiBaoGia       VARCHAR(255) NOT NULL
   ,TaoVaoLuc             DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP

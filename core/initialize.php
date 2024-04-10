@@ -11,5 +11,6 @@
     require_once("C:/xampp/htdocs/SkillBoost-API/core/NgheNghiep.php");
     require_once("C:/xampp/htdocs/SkillBoost-API/core/NhanVien.php");
     require_once("C:/xampp/htdocs/SkillBoost-API/core/QuyDinhGiamGia.php");
+    require_once("C:/xampp/htdocs/SkillBoost-API/core/TaiKhoan.php");
     require_once("C:/xampp/htdocs/SkillBoost-API/core/YeuCauTuVan.php");
 ?>

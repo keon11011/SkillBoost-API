@@ -9,7 +9,7 @@ class BaoGia{
     public $HoTenLead;
     public $TongTienTruocGiam; 
     public $MaGiamGia;
-    public $PhamTramGiamGIa;
+    public $PhanTramGiamGia;
     public $TongTien;
     public $TrangThaiBaoGia;
     public $TaoVaoLuc;
@@ -71,7 +71,7 @@ class BaoGia{
                 $this->HoTenLead = $row['HoTenLead'];
                 $this->TongTienTruocGiam = $row['TongTienTruocGiam'];
                 $this->MaGiamGia = $row['MaGiamGia'];
-                $this->PhamTramGiamGIa = $row['PhamTramGiamGIa'];
+                $this->PhanTramGiamGia = $row['PhanTramGiamGia'];
                 $this->TongTien = $row['TongTien'];
                 $this->TrangThaiBaoGia = $row['TrangThaiBaoGia'];
                 $this->TaoVaoLuc = $row['TaoVaoLuc'];
@@ -110,6 +110,75 @@ class BaoGia{
         }
     }
     
+    public function create() {
+        try {
+            // Define the query
+            $query = "INSERT INTO " . $this->table . "
+                      SET
+                      TenBaoGia = :TenBaoGia,
+                      MaLead = :MaLead,
+                      HoTenLead = :HoTenLead,
+                      TongTienTruocGiam = :TongTienTruocGiam,
+                      MaGiamGia = :MaGiamGia,
+                      PhanTramGiamGia = :PhanTramGiamGia,
+                      TongTien = :TongTien,
+                      TrangThaiBaoGia = :TrangThaiBaoGia,
+                      TaoVaoLuc = :TaoVaoLuc,
+                      TaoBoi = :TaoBoi,
+                      ChinhSuaLanCuoiVaoLuc = :ChinhSuaLanCuoiVaoLuc,
+                      ChinhSuaLanCuoiBoi = :ChinhSuaLanCuoiBoi";
+            
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+            
+            // Clean data
+            $this->TenBaoGia = htmlspecialchars(strip_tags($this->TenBaoGia));
+            $this->MaLead = htmlspecialchars(strip_tags($this->MaLead));
+            $this->HoTenLead = htmlspecialchars(strip_tags($this->HoTenLead));
+            $this->TongTienTruocGiam = htmlspecialchars(strip_tags($this->TongTienTruocGiam));
+            // dòng này có thể assigned null
+            if ($this->MaGiamGia !== null) {
+                $this->MaGiamGia = htmlspecialchars(strip_tags($this->MaGiamGia));
+            }
+            // dòng này có thể assigned null
+            if ($this->PhanTramGiamGia !== null) {
+                $this->PhanTramGiamGia = htmlspecialchars(strip_tags($this->PhanTramGiamGia));
+            }
+            $this->TongTien = htmlspecialchars(strip_tags($this->TongTien));
+            $this->TrangThaiBaoGia = htmlspecialchars(strip_tags($this->TrangThaiBaoGia));
+            //$this->TaoVaoLuc = date('Y-m-d H:i:s'); // Set current timestamp for TaoVaoLuc
+            $this->TaoBoi = htmlspecialchars(strip_tags($this->TaoBoi));
+            //$this->ChinhSuaLanCuoiVaoLuc = $this->TaoVaoLuc;
+            $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
+            
+            // Bind data
+            $stmt->bindParam(':TenBaoGia', $this->TenBaoGia);
+            $stmt->bindParam(':MaLead', $this->MaLead);
+            $stmt->bindParam(':HoTenLead', $this->HoTenLead);
+            $stmt->bindParam(':TongTienTruocGiam', $this->TongTienTruocGiam);
+            $stmt->bindParam(':MaGiamGia', $this->MaGiamGia);
+            $stmt->bindParam(':PhanTramGiamGia', $this->PhanTramGiamGia);
+            $stmt->bindParam(':TongTien', $this->TongTien);
+            $stmt->bindParam(':TrangThaiBaoGia', $this->TrangThaiBaoGia);
+            $stmt->bindParam(':TaoVaoLuc', $this->TaoVaoLuc);
+            $stmt->bindParam(':TaoBoi', $this->TaoBoi);
+            $stmt->bindParam(':ChinhSuaLanCuoiVaoLuc', $this->ChinhSuaLanCuoiVaoLuc);
+            $stmt->bindParam(':ChinhSuaLanCuoiBoi', $this->ChinhSuaLanCuoiBoi);
+            
+            // Execute query
+            if($stmt->execute()) {
+                return true;
+            }
+            
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+            
+            return false;
+        } catch (PDOException $e) {
+            // Handle database errors
+            echo json_encode(array("error" => $e->getMessage()));
+        }
+    }
     
 }
 ?>
