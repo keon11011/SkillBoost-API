@@ -80,6 +80,36 @@ class YeuCauTuVan {
     
         return false;
     }
+
+    public function accept(){
+        // Create query
+        $query = "UPDATE " . $this->table . "
+                  SET
+                    TrangThaiYCTV = :TrangThaiYCTV
+                  WHERE
+                    MaTuVan = :MaTuVan";
+        
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+    
+        // Clean data
+        $this->TrangThaiYCTV = htmlspecialchars(strip_tags($this->TrangThaiYCTV));
+        $this->MaTuVan = htmlspecialchars(strip_tags($this->MaTuVan));
+    
+        // Bind data
+        $stmt->bindParam(':TrangThaiYCTV', $this->TrangThaiYCTV);
+        $stmt->bindParam(':MaTuVan', $this->MaTuVan);
+    
+        // Execute query
+        if($stmt->execute()) {
+            return true;
+        }
+      
+        // Print error if something goes wrong
+        printf("Error: %s.\n", $stmt->error);
+    
+        return false;
+    }
 }
 
 ?>
