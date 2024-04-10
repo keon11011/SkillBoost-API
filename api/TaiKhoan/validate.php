@@ -6,9 +6,6 @@ header('Content-Type: application/json');
 // Include necessary files
 include_once 'C:/xampp/htdocs/SkillBoost-API/core/initialize.php'; // Adjust path as per your file structure
 
-// Instantiate TaiKhoan
-$taiKhoan= new TaiKhoan($db); // Assuming $db is the database connection
-
 // Get the raw POST data
 $input_data = file_get_contents("php://input");
 
@@ -35,9 +32,14 @@ $password = $input_data->password;
 $taiKhoan = new TaiKhoan($db);
 
 // Validate user
-if ($taiKhoan->validate($email, $password)) {
-    echo json_encode(array('valid' => true));
-} else {
-    echo json_encode(array('valid' => false));
+$validation_result = $taiKhoan->validate($email, $password);
+
+// Prepare response data
+$response_data = array('valid' => $validation_result['valid']);
+if ($validation_result['valid']) {
+    $response_data['MaNV'] = $validation_result['MaNV'];
 }
+
+// Send JSON response
+echo json_encode($response_data);
 ?>

@@ -26,10 +26,12 @@
                 $row_count = $stmt_count->fetch(PDO::FETCH_ASSOC);
                 $KtrTonTai = $row_count['count'];
         
-                // Lấy trạng thái tài khoản
-                $stmt_trang_thai = $this->conn->prepare("SELECT TrangThaiTK FROM TAIKHOAN WHERE EmailTK = ?");
+                // Lấy trạng thái tài khoản và MaNV
+                $stmt_trang_thai = $this->conn->prepare("SELECT TrangThaiTK, MaNV FROM TAIKHOAN WHERE EmailTK = ?");
                 $stmt_trang_thai->execute([$email]);
-                $TrangThaiTK = $stmt_trang_thai->fetchColumn();
+                $row_trang_thai = $stmt_trang_thai->fetch(PDO::FETCH_ASSOC);
+                $TrangThaiTK = $row_trang_thai['TrangThaiTK'];
+                $MaNV = $row_trang_thai['MaNV'];
         
                 // Nhập biến MKNhapVao
                 $MKNhapVao = $password;
@@ -48,12 +50,12 @@
                 // Kiểm tra các điều kiện và trả về kết quả
                 $result = ($KtrTonTai == 1 && $TrangThaiTK == 'Đang hoạt động' && $MaHashMKNhapVao === $MKHash) ? true : false;
         
-                return $result;
+                return array('valid' => $result, 'MaNV' => $MaNV);
             } catch(PDOException $e) {
                 // Handle database connection errors
                 echo "Connection failed: " . $e->getMessage();
-                return false;
+                return array('valid' => false, 'MaNV' => null);
             }
-        }        
+        }    
     }
 ?>
