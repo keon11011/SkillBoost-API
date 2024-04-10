@@ -157,8 +157,14 @@ class QuyDinhGiamGia {
         $this->MoTaLoaiGiamGia = htmlspecialchars(strip_tags($this->MoTaLoaiGiamGia));
         $this->SoLuongKhoaHocDangKy = htmlspecialchars(strip_tags($this->SoLuongKhoaHocDangKy));
         $this->MaNgheNghiep = htmlspecialchars(strip_tags($this->MaNgheNghiep));
-        $this->NgayBatDau = date('Y-m-d', strtotime($this->NgayBatDau));
-        $this->NgayKetThuc = date('Y-m-d', strtotime($this->NgayKetThuc));
+        // dòng này có thể assigned null
+        if ($this->NgayBatDau !== null) {
+            $this->NgayBatDau = htmlspecialchars(strip_tags($this->NgayBatDau));
+        }
+        // dòng này có thể assigned null
+        if ($this->NgayKetThuc !== null) {
+            $this->NgayKetThuc = htmlspecialchars(strip_tags($this->NgayKetThuc));
+        }
         $this->PhanTramGiamGiaMacDinh = htmlspecialchars(strip_tags($this->PhanTramGiamGiaMacDinh));
         $this->PhanTramGiamGiaToiDa = htmlspecialchars(strip_tags($this->PhanTramGiamGiaToiDa));
         //$this->ChinhSuaLanCuoiVaoLuc = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiVaoLuc));

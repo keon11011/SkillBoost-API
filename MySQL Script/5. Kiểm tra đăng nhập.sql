@@ -1,5 +1,5 @@
 -- Nhập biến email
-SET @email = 'ngphthanh@gmai.com';
+SET @email = 'ngphthanh@gmai.com'; -- điền field từ frontend
 
 -- Kiểm tra có tồn tại tài khoản hay không
 SELECT COUNT(*) INTO @KtrTonTai FROM TAIKHOAN WHERE EmailTK = @email;

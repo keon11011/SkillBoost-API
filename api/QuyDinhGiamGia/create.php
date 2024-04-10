@@ -26,8 +26,8 @@ if (!isset($data->MoTaLoaiGiamGia, $data->SoLuongKhoaHocDangKy, $data->MaNgheNgh
 $quyDinhGiamGia->MoTaLoaiGiamGia = $data->MoTaLoaiGiamGia;
 $quyDinhGiamGia->SoLuongKhoaHocDangKy = $data->SoLuongKhoaHocDangKy;
 $quyDinhGiamGia->MaNgheNghiep = $data->MaNgheNghiep;
-$quyDinhGiamGia->NgayBatDau = $data->NgayBatDau;
-$quyDinhGiamGia->NgayKetThuc = $data->NgayKetThuc;
+$quyDinhGiamGia->NgayBatDau = isset($data->NgayBatDau) ? $data->NgayBatDau : null;
+$quyDinhGiamGia->NgayKetThuc = isset($data->NgayKetThuc) ? $data->NgayKetThuc : null;
 $quyDinhGiamGia->PhanTramGiamGiaMacDinh = $data->PhanTramGiamGiaMacDinh;
 $quyDinhGiamGia->PhanTramGiamGiaToiDa = $data->PhanTramGiamGiaToiDa;
 $quyDinhGiamGia->TaoVaoLuc = date('Y-m-d H:i:s');
