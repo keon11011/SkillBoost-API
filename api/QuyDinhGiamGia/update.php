@@ -30,7 +30,8 @@ $quyDinhGiamGia->NgayKetThuc = $data->NgayKetThuc;
 $quyDinhGiamGia->PhanTramGiamGiaMacDinh = $data->PhanTramGiamGiaMacDinh;
 $quyDinhGiamGia->PhanTramGiamGiaToiDa = $data->PhanTramGiamGiaToiDa;
 $quyDinhGiamGia->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
-$quyDinhGiamGia->ChinhSuaLanCuoiBoi = 3;
+//$quyDinhGiamGia->ChinhSuaLanCuoiBoi = 3;
+$quyDinhGiamGia->ChinhSuaLanCuoiBoi = isset($data->ChinhSuaLanCuoiBoi) ? $data->ChinhSuaLanCuoiBoi : 3; // sửa
 $quyDinhGiamGia->TrangThaiQuyDinhGiamGia = 'Đang hoạt động';
 
 // Update QuyDinhGiamGia

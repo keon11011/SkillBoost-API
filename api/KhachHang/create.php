@@ -36,9 +36,11 @@ $khachhang->LyDoTrangThaiKH = isset($data->LyDoTrangThaiKH) ? $data->LyDoTrangTh
 $khachhang->GhiChuKH = isset($data->GhiChuKH) ? $data->GhiChuKH : null;
 $khachhang->ChuyenDoiTuMaLead = isset($data->ChuyenDoiTuMaLead) ? $data->ChuyenDoiTuMaLead : null;
 $khachhang->TaoVaoLuc = date('Y-m-d H:i:s');
-$khachhang->TaoBoi = 1; // Đang fix cứng
+//$khachhang->TaoBoi = 1; // Đang fix cứng
+$khachhang->TaoBoi = isset($data->TaoBoi) ? $data->TaoBoi : 1; // sửa
 $khachhang->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
-$khachhang->ChinhSuaLanCuoiBoi = 3; // Đang fix cứng
+//$khachhang->ChinhSuaLanCuoiBoi = 3; // Đang fix cứng
+$khachhang->ChinhSuaLanCuoiBoi = isset($data->ChinhSuaLanCuoiBoi) ? $data->ChinhSuaLanCuoiBoi : 3; // sửa
 
 // Create KhachHang
 if ($khachhang->create()) {

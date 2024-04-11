@@ -36,9 +36,11 @@ $lead->NguonLead = $data->NguonLead;
 $lead->GhiChuLead = isset($data->GhiChuLead) ? $data->GhiChuLead : null;
 $lead->LeadTuKHCu = isset($data->LeadTuKHCu) ? $data->LeadTuKHCu : null;
 $lead->TaoVaoLuc = date('Y-m-d H:i:s');
-$lead->TaoBoi = 1; // Đang fix cứng
+//$lead->TaoBoi = 1;
+$lead->TaoBoi = isset($data->TaoBoi) ? $data->TaoBoi : 1; // sửa
 $lead->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
-$lead->ChinhSuaLanCuoiBoi = 3; // Đang fix cứng
+//$lead->ChinhSuaLanCuoiBoi = 3; // Đang fix cứng
+$lead->ChinhSuaLanCuoiBoi = isset($data->ChinhSuaLanCuoiBoi) ? $data->ChinhSuaLanCuoiBoi : 3; // sửa
 
 // Create Lead
 if ($lead->create()) {

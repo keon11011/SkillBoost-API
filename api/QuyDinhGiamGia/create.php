@@ -31,9 +31,11 @@ $quyDinhGiamGia->NgayKetThuc = isset($data->NgayKetThuc) ? $data->NgayKetThuc : 
 $quyDinhGiamGia->PhanTramGiamGiaMacDinh = $data->PhanTramGiamGiaMacDinh;
 $quyDinhGiamGia->PhanTramGiamGiaToiDa = $data->PhanTramGiamGiaToiDa;
 $quyDinhGiamGia->TaoVaoLuc = date('Y-m-d H:i:s');
-$quyDinhGiamGia->TaoBoi = 3; // Fix cứng 
+//$quyDinhGiamGia->TaoBoi = 3;
+$quyDinhGiamGia->TaoBoi = isset($data->TaoBoi) ? $data->TaoBoi : 3; // sửa
 $quyDinhGiamGia->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
-$quyDinhGiamGia->ChinhSuaLanCuoiBoi = 3; // Fix cứng 
+//$quyDinhGiamGia->ChinhSuaLanCuoiBoi = 3; // Fix cứng 
+$quyDinhGiamGia->ChinhSuaLanCuoiBoi = isset($data->ChinhSuaLanCuoiBoi) ? $data->ChinhSuaLanCuoiBoi : 3; // sửa
 $quyDinhGiamGia->TrangThaiQuyDinhGiamGia = 'Đang hoạt động';
 
 // Create QuyDinhGiamGia

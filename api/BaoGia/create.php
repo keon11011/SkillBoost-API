@@ -32,9 +32,9 @@ $baoGia->PhanTramGiamGia = isset($data->PhanTramGiamGia) ? $data->PhanTramGiamGi
 $baoGia->TongTien = $data->TongTien;
 $baoGia->TrangThaiBaoGia = 'Chưa thanh toán'; // Fix cứng
 $baoGia->TaoVaoLuc = date('Y-m-d H:i:s');
-$baoGia->TaoBoi = 3; // Fix cứng
+$baoGia->TaoBoi = isset($data->TaoBoi) ? $data->TaoBoi : 3; // sửa
 $baoGia->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s'); 
-$baoGia->ChinhSuaLanCuoiBoi = 3; // Fix cứng
+$baoGia->ChinhSuaLanCuoiBoi = isset($data->ChinhSuaLanCuoiBoi) ? $data->ChinhSuaLanCuoiBoi : 3; // sửa
 
 // Create BaoGia
 if ($baoGia->create()) {

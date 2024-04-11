@@ -31,7 +31,7 @@ $baoGia->PhanTramGiamGia = isset($data->PhanTramGiamGia) ? $data->PhanTramGiamGi
 $baoGia->TongTien = $data->TongTien;
 $baoGia->TrangThaiBaoGia = isset($data->TrangThaiBaoGia) ? $data->TrangThaiBaoGia : 'Chưa thanh toán';
 $baoGia->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
-$baoGia->ChinhSuaLanCuoiBoi = isset($data->ChinhSuaLanCuoiBoi) ? $data->ChinhSuaLanCuoiBoi : 3;
+$baoGia->ChinhSuaLanCuoiBoi = isset($data->ChinhSuaLanCuoiBoi) ? $data->ChinhSuaLanCuoiBoi : 3; // sửa
 
 // Update BaoGia
 if ($baoGia->update()) {

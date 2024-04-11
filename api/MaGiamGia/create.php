@@ -29,9 +29,11 @@ $maGiamGia->PhanTramGiamGia = $data->PhanTramGiamGia;
 $maGiamGia->TrangThaiMaGiamGia = $data->TrangThaiMaGiamGia;
 $maGiamGia->MaQuyDinhGiamGia = $data->MaQuyDinhGiamGia;
 $maGiamGia->TaoVaoLuc = date('Y-m-d H:i:s');
-$maGiamGia->TaoBoi = 1; // Fix cứng
+//$maGiamGia->TaoBoi = 1; // Fix cứng
+$maGiamGia->TaoBoi = isset($data->TaoBoi) ? $data->TaoBoi : 1; // sửa
 $maGiamGia->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
-$maGiamGia->ChinhSuaLanCuoiBoi = 1; // Fix cứng
+//$maGiamGia->ChinhSuaLanCuoiBoi = 1; // Fix cứng
+$maGiamGia->ChinhSuaLanCuoiBoi = isset($data->ChinhSuaLanCuoiBoi) ? $data->ChinhSuaLanCuoiBoi : 3; // sửa
 
 // Create MaGiamGia
 if ($maGiamGia->create()) {
