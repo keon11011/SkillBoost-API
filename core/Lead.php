@@ -292,46 +292,7 @@ class Lead{
         return false;
     }
 
-    public function accept(){
-        // Create query
-        $query = "UPDATE " . $this->table . "
-                  SET
-                    TrangThaiLead = :TrangThaiLead,
-                    LyDoTrangThaiLead = :LyDoTrangThaiLead,
-                    ChinhSuaLanCuoiVaoLuc = :ChinhSuaLanCuoiVaoLuc,
-                    ChinhSuaLanCuoiBoi = :ChinhSuaLanCuoiBoi
-                  WHERE
-                    MaLead = :MaLead";
-        
-        // Prepare statement
-        $stmt = $this->conn->prepare($query);
-    
-        // Clean data
-        $this->TrangThaiLead = htmlspecialchars(strip_tags($this->TrangThaiLead));
-        $this->LyDoTrangThaiLead = htmlspecialchars(strip_tags($this->LyDoTrangThaiLead));
-        $this->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
-        $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
-        $this->MaLead = htmlspecialchars(strip_tags($this->MaLead));
-    
-        // Bind data
-        $stmt->bindParam(':TrangThaiLead', $this->TrangThaiLead);
-        $stmt->bindParam(':LyDoTrangThaiLead', $this->LyDoTrangThaiLead);
-        $stmt->bindParam(':ChinhSuaLanCuoiVaoLuc', $this->ChinhSuaLanCuoiVaoLuc);
-        $stmt->bindParam(':ChinhSuaLanCuoiBoi', $this->ChinhSuaLanCuoiBoi);
-        $stmt->bindParam(':MaLead', $this->MaLead);
-    
-        // Execute query
-        if($stmt->execute()) {
-            return true;
-        }
-      
-        // Print error if something goes wrong
-        printf("Error: %s.\n", $stmt->error);
-    
-        return false;
-    }
-
-    public function unfollow(){
+    public function update_trangthai(){
         // Create query
         $query = "UPDATE " . $this->table . "
                   SET

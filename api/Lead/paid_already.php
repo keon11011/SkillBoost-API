@@ -22,16 +22,16 @@ if (!isset($data->MaLead)) {
 
 // Set Lead properties from the received data
 $lead->MaLead = $data->MaLead;
-$lead->TrangThaiLead = 'Đang tư vấn';
+$lead->TrangThaiLead = 'Đã thanh toán';
 $lead->LyDoTrangThaiLead = isset($data->LyDoTrangThaiLead) ? $data->LyDoTrangThaiLead : null;
 $lead->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
 $lead->ChinhSuaLanCuoiBoi = 3; // Đang fix cứng
 
 // Update Lead
 if ($lead->update_trangthai()) {
-    echo json_encode(array('message' => 'Tiếp nhận thành công Lead.'));
+    echo json_encode(array('message' => 'Cập nhật trạng thái thanh toán thành công Lead.'));
 } else {
-    echo json_encode(array('message' => 'Tiếp nhận thất bại Lead.'));
+    echo json_encode(array('message' => 'Cập nhật trạng thái thanh toán thất bại Lead.'));
 }
 
 // Free the database connection

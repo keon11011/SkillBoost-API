@@ -28,7 +28,7 @@ $lead->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
 $lead->ChinhSuaLanCuoiBoi = 3; // Đang fix cứng
 
 // Update Lead
-if ($lead->delete()) {
+if ($lead->update_trangthai()) {
     echo json_encode(array('message' => 'Ngưng theo dõi thành công Lead.'));
 } else {
     echo json_encode(array('message' => 'Ngưng theo dõi thất bại Lead.'));

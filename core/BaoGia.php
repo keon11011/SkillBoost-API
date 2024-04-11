@@ -179,6 +179,145 @@ class BaoGia{
             echo json_encode(array("error" => $e->getMessage()));
         }
     }
+
+    public function update() {
+        try {
+            // Define the query
+            $query = "UPDATE " . $this->table . "
+                      SET
+                      TenBaoGia = :TenBaoGia,
+                      MaLead = :MaLead,
+                      HoTenLead = :HoTenLead,
+                      TongTienTruocGiam = :TongTienTruocGiam,
+                      MaGiamGia = :MaGiamGia,
+                      PhanTramGiamGia = :PhanTramGiamGia,
+                      TongTien = :TongTien,
+                      TrangThaiBaoGia = :TrangThaiBaoGia,
+                      ChinhSuaLanCuoiVaoLuc = :ChinhSuaLanCuoiVaoLuc,
+                      ChinhSuaLanCuoiBoi = :ChinhSuaLanCuoiBoi
+                      WHERE MaBaoGia = :MaBaoGia";
+            
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+            
+            // Clean data
+            $this->TenBaoGia = htmlspecialchars(strip_tags($this->TenBaoGia));
+            $this->MaLead = htmlspecialchars(strip_tags($this->MaLead));
+            $this->HoTenLead = htmlspecialchars(strip_tags($this->HoTenLead));
+            $this->TongTienTruocGiam = htmlspecialchars(strip_tags($this->TongTienTruocGiam));
+            $this->MaGiamGia = htmlspecialchars(strip_tags($this->MaGiamGia));
+            $this->PhanTramGiamGia = htmlspecialchars(strip_tags($this->PhanTramGiamGia));
+            $this->TongTien = htmlspecialchars(strip_tags($this->TongTien));
+            $this->TrangThaiBaoGia = htmlspecialchars(strip_tags($this->TrangThaiBaoGia));
+            $this->TaoBoi = htmlspecialchars(strip_tags($this->TaoBoi));
+            $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
+            $this->MaBaoGia = htmlspecialchars(strip_tags($this->MaBaoGia));
+            
+            // Bind data
+            $stmt->bindParam(':TenBaoGia', $this->TenBaoGia);
+            $stmt->bindParam(':MaLead', $this->MaLead);
+            $stmt->bindParam(':HoTenLead', $this->HoTenLead);
+            $stmt->bindParam(':TongTienTruocGiam', $this->TongTienTruocGiam);
+            $stmt->bindParam(':MaGiamGia', $this->MaGiamGia);
+            $stmt->bindParam(':PhanTramGiamGia', $this->PhanTramGiamGia);
+            $stmt->bindParam(':TongTien', $this->TongTien);
+            $stmt->bindParam(':TrangThaiBaoGia', $this->TrangThaiBaoGia);
+            $stmt->bindParam(':ChinhSuaLanCuoiVaoLuc', $this->ChinhSuaLanCuoiVaoLuc);
+            $stmt->bindParam(':ChinhSuaLanCuoiBoi', $this->ChinhSuaLanCuoiBoi);
+            $stmt->bindParam(':MaBaoGia', $this->MaBaoGia); 
+            
+            // Execute query
+            if($stmt->execute()) {
+                return true;
+            }
+            
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+            
+            return false;
+        } catch (PDOException $e) {
+            // Handle database errors
+            echo json_encode(array("error" => $e->getMessage()));
+        }
+    }
+
+    public function delete() {
+        try {
+            // Define the query
+            $query = "UPDATE " . $this->table . "
+                      SET
+                      TrangThaiBaoGia = :TrangThaiBaoGia,
+                      ChinhSuaLanCuoiVaoLuc = :ChinhSuaLanCuoiVaoLuc,
+                      ChinhSuaLanCuoiBoi = :ChinhSuaLanCuoiBoi
+                      WHERE MaBaoGia = :MaBaoGia";
+            
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+            
+            // Clean data
+            $this->TrangThaiBaoGia = htmlspecialchars(strip_tags($this->TrangThaiBaoGia));
+            $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
+            $stmt->bindParam(':MaBaoGia', $this->MaBaoGia); 
+            
+            // Bind data
+            $stmt->bindParam(':TrangThaiBaoGia', $this->TrangThaiBaoGia);
+            $stmt->bindParam(':ChinhSuaLanCuoiVaoLuc', $this->ChinhSuaLanCuoiVaoLuc);
+            $stmt->bindParam(':ChinhSuaLanCuoiBoi', $this->ChinhSuaLanCuoiBoi);
+            $stmt->bindParam(':MaBaoGia', $this->MaBaoGia);
+            
+            // Execute query
+            if($stmt->execute()) {
+                return true;
+            }
+            
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+            
+            return false;
+        } catch (PDOException $e) {
+            // Handle database errors
+            echo json_encode(array("error" => $e->getMessage()));
+        }
+    }
+
+    public function update_trangthai() {
+        try {
+            // Define the query
+            $query = "UPDATE " . $this->table . "
+                      SET
+                      TrangThaiBaoGia = :TrangThaiBaoGia,
+                      ChinhSuaLanCuoiVaoLuc = :ChinhSuaLanCuoiVaoLuc,
+                      ChinhSuaLanCuoiBoi = :ChinhSuaLanCuoiBoi
+                      WHERE MaBaoGia = :MaBaoGia";
+            
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+            
+            // Clean data
+            $this->TrangThaiBaoGia = htmlspecialchars(strip_tags($this->TrangThaiBaoGia));
+            $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
+            $stmt->bindParam(':MaBaoGia', $this->MaBaoGia); 
+            
+            // Bind data
+            $stmt->bindParam(':TrangThaiBaoGia', $this->TrangThaiBaoGia);
+            $stmt->bindParam(':ChinhSuaLanCuoiVaoLuc', $this->ChinhSuaLanCuoiVaoLuc);
+            $stmt->bindParam(':ChinhSuaLanCuoiBoi', $this->ChinhSuaLanCuoiBoi);
+            $stmt->bindParam(':MaBaoGia', $this->MaBaoGia);
+            
+            // Execute query
+            if($stmt->execute()) {
+                return true;
+            }
+            
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+            
+            return false;
+        } catch (PDOException $e) {
+            // Handle database errors
+            echo json_encode(array("error" => $e->getMessage()));
+        }
+    }
     
 }
 ?>
