@@ -17,17 +17,17 @@ $chiTietKhoaHoc = new ChiTietKhoaHocThuocYCTV($db);
 $data = json_decode(file_get_contents("php://input"));
 
 // Check if required data is set
-if (!isset($data->MaTuVan, $data->MaKhoaHoc, $data->TenKhoaHoc, $data->GiangVien, $data->HocPhi)) {
+if (!isset($data->MaKhoaHoc, $data->TenKhoaHoc, $data->GiangVien, $data->GiaTien)) {
     echo json_encode(array('message' => 'Missing required data.'));
     exit;
 }
 
 // Set post properties from the received data
-$chiTietKhoaHoc->MaTuVan = $data->MaTuVan;
+$chiTietKhoaHoc->MaTuVan = -1;
 $chiTietKhoaHoc->MaKhoaHoc = $data->MaKhoaHoc;
 $chiTietKhoaHoc->TenKhoaHoc = $data->TenKhoaHoc;
 $chiTietKhoaHoc->GiangVien = $data->GiangVien;
-$chiTietKhoaHoc->HocPhi = $data->HocPhi;
+$chiTietKhoaHoc->GiaTien = $data->GiaTien;
 
 // Create ChiTietKhoaHocThuocYCTV
 if ($chiTietKhoaHoc->create()) {

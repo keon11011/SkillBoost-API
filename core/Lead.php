@@ -48,8 +48,6 @@ class Lead{
                     JOIN nhanvien AS s ON l.MaNVPhuTrachLead = s.MaNV 
                     WHERE l.MaLead = :MaLead";
 
-
-    
         // Prepare the query statement
         $stmt = $this->conn->prepare($query);
     

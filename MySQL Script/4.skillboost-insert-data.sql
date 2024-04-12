@@ -40,10 +40,10 @@ INSERT INTO YeuCauTuVan(TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLead
 -- SELECT * FROM YeuCauTuVan
 ;
 
-INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,HocPhi) VALUES (1,2,'Product Owner Master Class','Harry Phạm',5400000);
-INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,HocPhi) VALUES (2,3,'SQL Advanced Class','Jerry Bùi',4914000);
-INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,HocPhi) VALUES (3,1,'IT Business Analysis','Ryan Nguyễn',4000000);
-INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,HocPhi) VALUES (4,2,'Product Owner Master Class','Harry Phạm',5400000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (1,2,'Product Owner Master Class','Harry Phạm',5400000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (2,3,'SQL Advanced Class','Jerry Bùi',4914000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (3,1,'IT Business Analysis','Ryan Nguyễn',4000000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (4,2,'Product Owner Master Class','Harry Phạm',5400000);
 -- SELECT * FROM YeuCauTuVan
 ;
 

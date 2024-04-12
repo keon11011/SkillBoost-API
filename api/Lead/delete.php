@@ -25,7 +25,7 @@ $lead->MaLead = $data->MaLead;
 $lead->TrangThaiLead = 'Xóa mềm';
 $lead->LyDoTrangThaiLead = isset($data->LyDoTrangThaiLead) ? $data->LyDoTrangThaiLead : null;
 $lead->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
-$lead->ChinhSuaLanCuoiBoi = 3; // Đang fix cứng
+$lead->ChinhSuaLanCuoiBoi = isset($data->ChinhSuaLanCuoiBoi) ? $data->ChinhSuaLanCuoiBoi : 3; // sửa
 
 // Update Lead
 if ($lead->delete()) {

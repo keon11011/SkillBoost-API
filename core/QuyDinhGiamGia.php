@@ -24,9 +24,16 @@ class QuyDinhGiamGia {
 
     public function read() {
         try {
-            $query = "SELECT * FROM " . $this->table . " WHERE TrangThaiQuyDinhGiamGia != 'Xóa mềm'";
+            $query = "SELECT qdgg.*, nv.HoTenNV 
+                      FROM  " . $this->table . " qdgg
+                      LEFT JOIN nhanvien nv ON qdgg.TaoBoi = nv.MaNV 
+                      WHERE qdgg.TrangThaiQuyDinhGiamGia != 'Xóa mềm'";
+    
+            // Prepare and execute the SQL query
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
+    
+            // Return the prepared statement
             return $stmt;
         } catch (PDOException $e) {
             // Handle database errors
@@ -73,6 +80,24 @@ class QuyDinhGiamGia {
             echo json_encode(array("error" => $e->getMessage()));
         }
     }    
+
+    public function read_sort(){
+        try {
+            $query = "SELECT * 
+                      FROM  " . $this->table . " 
+                      ORDER BY PhanTramGiamGiaToiDa DESC, PhanTramGiamGiaMacDinh DESC";
+    
+            // Prepare and execute the SQL query
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+    
+            // Return the prepared statement
+            return $stmt;
+        } catch (PDOException $e) {
+            // Handle database errors
+            echo json_encode(array("error" => $e->getMessage()));
+        }
+    }
 
     public function create() {
         // Create query

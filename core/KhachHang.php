@@ -21,6 +21,8 @@ class KhachHang{
     public $ChinhSuaLanCuoiVaoLuc;
     public $ChinhSuaLanCuoiBoi;
 
+    public $TenNgheNghiep;
+
     public function __construct($db) {
         $this->conn = $db;
     }
@@ -39,7 +41,12 @@ class KhachHang{
 
     public function read_single(){
         // Define the query
-        $query = "SELECT * FROM " . $this->table . " WHERE MaKH = :MaKH";
+        // $query = "SELECT * FROM " . $this->table . " WHERE MaKH = :MaKH";
+
+        $query = "SELECT kh.*, o.TenNgheNghiep
+                    FROM " . $this->table . " AS kh 
+                    JOIN nghenghiep AS o ON kh.MaNgheNghiep = o.MaNgheNghiep 
+                    WHERE kh.MaKH = :MaKH";
     
         // Prepare the query statement
         $stmt = $this->conn->prepare($query);
@@ -71,6 +78,7 @@ class KhachHang{
         $this->TaoBoi = $row['TaoBoi'];
         $this->ChinhSuaLanCuoiVaoLuc = $row['ChinhSuaLanCuoiVaoLuc'];
         $this->ChinhSuaLanCuoiBoi = $row['ChinhSuaLanCuoiBoi'];
+        $this->TenNgheNghiep = $row['TenNgheNghiep'];
     
         // Return the fetched user data
         return $row;
@@ -157,5 +165,43 @@ class KhachHang{
         return false;
     }
     
+    public function delete(){
+        // Create query
+        $query = "UPDATE " . $this->table . "
+                  SET
+                    TrangThaiKH = :TrangThaiKH,
+                    LyDoTrangThaiKH = :LyDoTrangThaiKH,
+                    ChinhSuaLanCuoiVaoLuc = :ChinhSuaLanCuoiVaoLuc,
+                    ChinhSuaLanCuoiBoi = :ChinhSuaLanCuoiBoi
+                  WHERE
+                    MaKH = :MaKH";
+        
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+    
+        // Clean data
+        $this->TrangThaiKH = htmlspecialchars(strip_tags($this->TrangThaiKH));
+        $this->LyDoTrangThaiKH = htmlspecialchars(strip_tags($this->LyDoTrangThaiKH));
+        $this->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s');
+        $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
+        $this->MaKH = htmlspecialchars(strip_tags($this->MaKH));
+    
+        // Bind data
+        $stmt->bindParam(':TrangThaiKH', $this->TrangThaiKH);
+        $stmt->bindParam(':LyDoTrangThaiKH', $this->LyDoTrangThaiKH);
+        $stmt->bindParam(':ChinhSuaLanCuoiVaoLuc', $this->ChinhSuaLanCuoiVaoLuc);
+        $stmt->bindParam(':ChinhSuaLanCuoiBoi', $this->ChinhSuaLanCuoiBoi);
+        $stmt->bindParam(':MaKH', $this->MaKH);
+    
+        // Execute query
+        if($stmt->execute()) {
+            return true;
+        }
+      
+        // Print error if something goes wrong
+        printf("Error: %s.\n", $stmt->error);
+    
+        return false;
+    }
 }
 ?>

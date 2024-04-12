@@ -56,7 +56,7 @@ CREATE TABLE ChiTietKhoaHocThuocYCTV(
   ,MaKhoaHoc  INT NOT NULL
   ,TenKhoaHoc VARCHAR(255) NOT NULL
   ,GiangVien  VARCHAR(255) NOT NULL
-  ,HocPhi     INT  NOT NULL
+  ,GiaTien     INT  NOT NULL
   ,PRIMARY KEY (MaTuVan, MaKhoaHoc)
 );
 -- DROP TABLE ChiTietKhoaHocThuocYCTV;
@@ -208,15 +208,15 @@ CREATE TABLE KhoaHoc(
    MaKhoaHoc             INT AUTO_INCREMENT NOT NULL PRIMARY KEY
   ,TenKhoaHoc            VARCHAR(255) NOT NULL
   ,MoTaNgan              TEXT NOT NULL
-  ,MoTaDai               LONGTEXT NOT NULL
-  ,ThoiLuongKhoaHoc      INT  NOT NULL
-  ,SoBaiViet             INT  NOT NULL
-  ,SoFileTaiXuong        INT  NOT NULL
+  ,MoTaDai               LONGTEXT 
+  ,ThoiLuongKhoaHoc      INT  
+  ,SoBaiViet             INT  
+  ,SoFileTaiXuong        INT  
   ,GiangVien             VARCHAR(255) NOT NULL
-  ,MucDoKhoaHoc          VARCHAR(255) NOT NULL
+  ,MucDoKhoaHoc          VARCHAR(255) 
   ,LuotDanhGia           INT  NOT NULL
   ,SoLuongHocVienToiDa   INT  NOT NULL
-  ,SoLuongHocVienConLai  INT  NOT NULL
+  ,SoLuongHocVienConLai  INT  
   ,GiaTien               INT  NOT NULL
   ,NgayKhaiGiang         DATE  NOT NULL
   ,NgayBeGiang           DATE  NOT NULL

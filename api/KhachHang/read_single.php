@@ -33,7 +33,8 @@ $khachhangArray = array(
     'TaoVaoLuc' => $khachhangData['TaoVaoLuc'],
     'TaoBoi' => $khachhangData['TaoBoi'],
     'ChinhSuaLanCuoiVaoLuc' => $khachhangData['ChinhSuaLanCuoiVaoLuc'],
-    'ChinhSuaLanCuoiBoi' => $khachhangData['ChinhSuaLanCuoiBoi']
+    'ChinhSuaLanCuoiBoi' => $khachhangData['ChinhSuaLanCuoiBoi'],
+    'TenNgheNghiep' => $khachhangData['TenNgheNghiep']
 );
 
 // Output the KhachHang array as JSON and exit

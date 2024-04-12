@@ -17,16 +17,16 @@ $maGiamGia = new MaGiamGia($db);
 $data = json_decode(file_get_contents("php://input"));
 
 // Check if required data is set
-if (!isset($data->MoTaMaGiamGia, $data->PhamViApDung, $data->PhanTramGiamGia, $data->TrangThaiMaGiamGia, $data->MaQuyDinhGiamGia)) {
+if (!isset($data->PhanTramGiamGia, $data->MaQuyDinhGiamGia)) {
     echo json_encode(array('message' => 'Missing required data.'));
     exit;
 }
 
 // Set post properties from the received data
-$maGiamGia->MoTaMaGiamGia = $data->MoTaMaGiamGia;
-$maGiamGia->PhamViApDung = $data->PhamViApDung;
+$maGiamGia->MoTaMaGiamGia = 'MAGIAMGIACANHANCUALEAD';
+$maGiamGia->PhamViApDung = 'Cho cá nhân';
 $maGiamGia->PhanTramGiamGia = $data->PhanTramGiamGia;
-$maGiamGia->TrangThaiMaGiamGia = $data->TrangThaiMaGiamGia;
+$maGiamGia->TrangThaiMaGiamGia = 'Khả dụng';
 $maGiamGia->MaQuyDinhGiamGia = $data->MaQuyDinhGiamGia;
 $maGiamGia->TaoVaoLuc = date('Y-m-d H:i:s');
 //$maGiamGia->TaoBoi = 1; // Fix cứng
