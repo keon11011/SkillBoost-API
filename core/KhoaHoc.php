@@ -5,6 +5,7 @@ class KhoaHoc{
 
     public $MaKhoaHoc;
     public $TenKhoaHoc;
+    public $HinhMinhHoa;
     public $MoTaNgan;
     public $MoTaDai;
     public $ThoiLuongKhoaHoc;
@@ -64,6 +65,7 @@ class KhoaHoc{
             // Set properties with the fetched data
             $this->MaKhoaHoc = $row['MaKhoaHoc'];
             $this->TenKhoaHoc = $row['TenKhoaHoc'];
+            $this->TenKhoaHoc = $row['HinhMinhHoa'];
             $this->MoTaNgan = $row['MoTaNgan'];
             $this->MoTaDai = $row['MoTaDai'];
             $this->ThoiLuongKhoaHoc = $row['ThoiLuongKhoaHoc'];
@@ -151,6 +153,7 @@ class KhoaHoc{
         $query = "INSERT INTO " . $this->table . "
                   SET
                   TenKhoaHoc = :TenKhoaHoc,
+                  HinhMinhHoa = :HinhMinhHoa,
                   MoTaNgan = :MoTaNgan,
                   MoTaDai = :MoTaDai,
                   ThoiLuongKhoaHoc = :ThoiLuongKhoaHoc,
@@ -177,6 +180,7 @@ class KhoaHoc{
     
         // Clean data
         $this->TenKhoaHoc = htmlspecialchars(strip_tags($this->TenKhoaHoc));
+        $this->HinhMinhHoa = htmlspecialchars(strip_tags($this->HinhMinhHoa));
         $this->MoTaNgan = htmlspecialchars(strip_tags($this->MoTaNgan));
         if ($this->MoTaDai !== null) {
             $this->MoTaDai = htmlspecialchars(strip_tags($this->MoTaDai));
@@ -210,6 +214,7 @@ class KhoaHoc{
     
         // Bind parameters
         $stmt->bindParam(':TenKhoaHoc', $this->TenKhoaHoc);
+        $stmt->bindParam(':HinhMinhHoa', $this->HinhMinhHoa);
         $stmt->bindParam(':MoTaNgan', $this->MoTaNgan);
         $stmt->bindParam(':MoTaDai', $this->MoTaDai);
         $stmt->bindParam(':ThoiLuongKhoaHoc', $this->ThoiLuongKhoaHoc);

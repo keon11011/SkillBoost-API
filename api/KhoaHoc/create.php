@@ -24,6 +24,7 @@ if (!isset($data->TenKhoaHoc, $data->MoTaNgan, $data->NgayKhaiGiang, $data->Ngay
 
 // Set post properties from the received data
 $khoahoc->TenKhoaHoc = $data->TenKhoaHoc;
+$khoahoc->HinhMinhHoa = 'Demo_course';
 $khoahoc->MoTaNgan = $data->MoTaNgan;
 $khoahoc->MoTaDai = isset($data->MoTaDai) ? $data->MoTaDai : null;
 $khoahoc->ThoiLuongKhoaHoc = isset($data->ThoiLuongKhoaHoc) ? $data->ThoiLuongKhoaHoc : null;
@@ -47,9 +48,9 @@ $khoahoc->ChinhSuaLanCuoiBoi = isset($data->ChinhSuaLanCuoiBoi) ? $data->ChinhSu
 
 // Create KhoaHoc
 if ($khoahoc->create()) {
-    echo json_encode(array('message' => 'Tạo thành công KhoaHoc mới.'));
+    echo json_encode(array('message' => 'Tạo thành công khóa học mới.'));
 } else {
-    echo json_encode(array('message' => 'Tạo thất bại KhoaHoc mới.'));
+    echo json_encode(array('message' => 'Tạo thất bại khóa học mới.'));
 }
 
 // Free the database connection

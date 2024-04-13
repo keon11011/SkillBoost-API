@@ -3,6 +3,7 @@
         private $conn;
         private $table = 'chitietkhoahocthuocyctv';
 
+        public $ID;
         public $MaTuVan;
         public $MaKhoaHoc;
         public $TenKhoaHoc;

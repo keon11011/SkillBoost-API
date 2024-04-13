@@ -3,6 +3,7 @@ class ChiTietKhoaHocThuocBaoGia{
     private $conn;
     private $table = 'chitietkhoahocthuocbaogia';
 
+    public $ID;
     public $MaBaoGia;
     public $MaKhoaHoc;
     public $TenKhoaHoc;

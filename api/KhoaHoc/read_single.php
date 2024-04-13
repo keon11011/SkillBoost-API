@@ -19,6 +19,7 @@ $khoahocData = $khoahoc->read_single();
 $khoahocArray = array(
     'MaKhoaHoc' => $khoahocData['MaKhoaHoc'],
     'TenKhoaHoc' => $khoahocData['TenKhoaHoc'],
+    'HinhMinhHoa' => $khoahocData['HinhMinhHoa'],
     'MoTaNgan' => $khoahocData['MoTaNgan'],
     'MoTaDai' => $khoahocData['MoTaDai'],
     'ThoiLuongKhoaHoc' => $khoahocData['ThoiLuongKhoaHoc'],
