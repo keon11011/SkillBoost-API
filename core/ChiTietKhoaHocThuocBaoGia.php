@@ -51,6 +51,34 @@ class ChiTietKhoaHocThuocBaoGia{
         return false;
     }
 
+    public function update_mabaogia(){
+        // Create query
+        $query = "UPDATE " . $this->table . "
+                  SET
+                    MaBaoGia = :MaBaoGia
+                  WHERE
+                    MaBaoGia = -1";
+        
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+    
+        // Clean data
+        $this->MaBaoGia = htmlspecialchars(strip_tags($this->MaBaoGia));
+    
+        // Bind data
+        $stmt->bindParam(':MaBaoGia', $this->MaBaoGia);
+    
+        // Execute query
+        if($stmt->execute()) {
+            return true;
+        }
+      
+        // Print error if something goes wrong
+        printf("Error: %s.\n", $stmt->error);
+    
+        return false;
+    }
+
     public function delete() {
         // Create query
         $query = "DELETE FROM " . $this->table . " WHERE MaBaoGia = :MaBaoGia";

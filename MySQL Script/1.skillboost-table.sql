@@ -52,12 +52,12 @@ CREATE TABLE YeuCauTuVan(
 -- DROP TABLE YeuCauTuVan;
 
 CREATE TABLE ChiTietKhoaHocThuocYCTV(
-   MaTuVan    INT NOT NULL
+   ID         INT AUTO_INCREMENT PRIMARY KEY
+  ,MaTuVan    INT NOT NULL
   ,MaKhoaHoc  INT NOT NULL
   ,TenKhoaHoc VARCHAR(255) NOT NULL
   ,GiangVien  VARCHAR(255) NOT NULL
   ,GiaTien     INT  NOT NULL
-  ,PRIMARY KEY (MaTuVan, MaKhoaHoc)
 );
 -- DROP TABLE ChiTietKhoaHocThuocYCTV;
 
@@ -122,12 +122,12 @@ CREATE TABLE BaoGia(
 -- DROP TABLE BaoGia;
 
 CREATE TABLE ChiTietKhoaHocThuocBaoGia(
-   MaBaoGia   INT NOT NULL
+   ID         INT AUTO_INCREMENT PRIMARY KEY
+  ,MaBaoGia   INT NOT NULL
   ,MaKhoaHoc  INT NOT NULL
   ,TenKhoaHoc VARCHAR(255) NOT NULL
   ,GiangVien  VARCHAR(255) NOT NULL
   ,GiaTien    INT  NOT NULL
-  ,PRIMARY KEY (MaBaoGia, MaKhoaHoc)
 );
 -- DROP TABLE ChiTietKhoaHocThuocBaoGia;
 
@@ -207,6 +207,7 @@ CREATE TABLE HoatDongKH(
 CREATE TABLE KhoaHoc(
    MaKhoaHoc             INT AUTO_INCREMENT NOT NULL PRIMARY KEY
   ,TenKhoaHoc            VARCHAR(255) NOT NULL
+  ,HinhMinhHoa           VARCHAR(255)
   ,MoTaNgan              TEXT NOT NULL
   ,MoTaDai               LONGTEXT 
   ,ThoiLuongKhoaHoc      INT  
