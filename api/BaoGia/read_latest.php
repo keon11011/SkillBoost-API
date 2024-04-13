@@ -9,29 +9,44 @@ include_once 'C:/xampp/htdocs/SkillBoost-API/core/initialize.php';
 // Instantiate BaoGia
 $baoGia = new BaoGia($db);
 
-// Read a single BaoGia
+// Read the latest BaoGia
 $baoGiaData = $baoGia->read_lastest();
 
-// Construct the BaoGia array
-$baoGiaArray = array(
-    'MaBaoGia' => $baoGiaData['MaBaoGia'],
-    'TenBaoGia' => $baoGiaData['TenBaoGia'],
-    'MaLead' => $baoGiaData['MaLead'],
-    'HoTenLead' => $baoGiaData['HoTenLead'],
-    'TongTienTruocGiam' => $baoGiaData['TongTienTruocGiam'],
-    'MaGiamGia' => $baoGiaData['MaGiamGia'],
-    'PhanTramGiamGia' => $baoGiaData['PhanTramGiamGia'],
-    'TongTien' => $baoGiaData['TongTien'],
-    'TrangThaiBaoGia' => $baoGiaData['TrangThaiBaoGia'],
-    'TaoVaoLuc' => $baoGiaData['TaoVaoLuc'],
-    'TaoBoi' => $baoGiaData['TaoBoi'],
-    'ChinhSuaLanCuoiVaoLuc' => $baoGiaData['ChinhSuaLanCuoiVaoLuc'],
-    'ChinhSuaLanCuoiBoi' => $baoGiaData['ChinhSuaLanCuoiBoi']
-);
+// Check if a record was found
+if ($baoGiaData) {
+    // Fetch the data as an associative array
+    $baoGiaRow = $baoGiaData->fetch(PDO::FETCH_ASSOC);
 
-// Output the BaoGia array as JSON and exit
-echo json_encode($baoGiaArray);
+    // Construct the BaoGia array
+    $baoGiaArray = array(
+        'MaBaoGia' => $baoGiaRow['MaBaoGia'],
+        'TenBaoGia' => $baoGiaRow['TenBaoGia'],
+        'MaLead' => $baoGiaRow['MaLead'],
+        'HoTenLead' => $baoGiaRow['HoTenLead'],
+        'TongTienTruocGiam' => $baoGiaRow['TongTienTruocGiam'],
+        'MaGiamGia' => $baoGiaRow['MaGiamGia'],
+        'PhanTramGiamGia' => $baoGiaRow['PhanTramGiamGia'],
+        'TongTien' => $baoGiaRow['TongTien'],
+        'TrangThaiBaoGia' => $baoGiaRow['TrangThaiBaoGia'],
+        'TaoVaoLuc' => $baoGiaRow['TaoVaoLuc'],
+        'TaoBoi' => $baoGiaRow['TaoBoi'],
+        'ChinhSuaLanCuoiVaoLuc' => $baoGiaRow['ChinhSuaLanCuoiVaoLuc'],
+        'ChinhSuaLanCuoiBoi' => $baoGiaRow['ChinhSuaLanCuoiBoi'],
+        'GioiTinhLead' => $baoGiaRow['GioiTinhLead'],
+        'NgaySinhLead' => $baoGiaRow['NgaySinhLead'],
+        'SoDienThoaiLead' => $baoGiaRow['SoDienThoaiLead'],
+        'EmailLead' => $baoGiaRow['EmailLead'],
+        'MaNgheNghiep' => $baoGiaRow['MaNgheNghiep']
+    );
 
-// Free the database connection
+    // Output the BaoGia array as JSON
+    echo json_encode($baoGiaArray);
+} else {
+    // If no record was found, output a JSON error message
+    echo json_encode(array('message' => 'No record found.'));
+}
+
+// Close the statement and database connection
+//$baoGiaData->closeCursor();
 $db = null;
 ?>
