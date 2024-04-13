@@ -33,18 +33,31 @@ INSERT INTO TaiKhoan(EmailTK,MatKhauTK,TrangThaiTK,MaNV,TaoVaoLuc,TaoBoi,ChinhSu
 -- SELECT * FROM TaiKhoan
 ;
 
-INSERT INTO YeuCauTuVan(TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES ('Nguyễn Thu Việc','1988-03-02','viecthunguyen@gmail.com','0888777666',NULL,'Đã tiếp nhận','2023-09-11 13:45:35',3);
-INSERT INTO YeuCauTuVan(TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES ('Nguyễn Hoàng Minh','1978-12-05','minhhoangnguyen@gmail.com','0999888777',NULL,'Đã tiếp nhận','2023-01-17 23:15:47',2);
-INSERT INTO YeuCauTuVan(TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES ('Phan Duy Trọng','2003-05-15','trongphanduy@gmail.com','0987654321',NULL,'Đã tiếp nhận','2023-01-22 01:51:15',6);
-INSERT INTO YeuCauTuVan(TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES ('Bùi Xuân Vĩ','1982-01-12','vixuanbui@gmail.com','0444333222',NULL,'Đã tiếp nhận','2023-01-08 01:20:08',9);
+INSERT INTO YeuCauTuVan(MaTuVan,TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES (1,'Nguyễn Thu Việc','1988-03-02','viecthunguyen@gmail.com','0888777666',NULL,'Đã tiếp nhận','2023-09-11 13:45:35',3);
+INSERT INTO YeuCauTuVan(MaTuVan,TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES (2,'Nguyễn Hoàng Minh','1978-12-05','minhhoangnguyen@gmail.com','0999888777',NULL,'Đã tiếp nhận','2023-01-17 23:15:47',2);
+INSERT INTO YeuCauTuVan(MaTuVan,TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES (3,'Phan Duy Trọng','2003-05-15','trongphanduy@gmail.com','0987654321',NULL,'Đã tiếp nhận','2023-01-22 01:51:15',6);
+INSERT INTO YeuCauTuVan(MaTuVan,TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES (4,'Bùi Xuân Vĩ','1982-01-12','vixuanbui@gmail.com','0444333222',NULL,'Đã tiếp nhận','2023-01-08 01:20:08',9);
+INSERT INTO YeuCauTuVan(MaTuVan,TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES (5,'Ngô Thị Kim Cương','1991-06-30','kimcuongngothi@gmail.com','0777007007',NULL,'Đã tiếp nhận','2023-09-11 13:45:35',1);
+INSERT INTO YeuCauTuVan(MaTuVan,TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES (6,'Lê Minh Quân','1992-09-25','minhquanle@gmail.com','0123456789',NULL,'Đã tiếp nhận','2023-01-08 01:20:08',4);
+INSERT INTO YeuCauTuVan(MaTuVan,TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES (7,'Dương Thùy Dương','2002-04-18','duongthuyduong@gmail.com','0333222111',NULL,'Đã tiếp nhận','2023-09-11 13:45:35',5);
+INSERT INTO YeuCauTuVan(MaTuVan,TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES (8,'Trần Kim Ngọc','1985-11-10','ngockimtran@gmail.com','0909090909',NULL,'Đã tiếp nhận','2023-01-22 01:51:15',7);
+INSERT INTO YeuCauTuVan(MaTuVan,TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES (9,'Lâm Thy Nhã','1979-07-20','nhalamthy@gmail.com','0555666777',NULL,'Đã tiếp nhận','2023-01-08 01:20:08',8);
+INSERT INTO YeuCauTuVan(MaTuVan,TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) VALUES (10,'Dương Bích Tuyền','1983-08-08','tuyenbichduong@gmail.com','0111222333',NULL,'Đã tiếp nhận','2023-01-08 01:20:08',10);
 -- SELECT * FROM YeuCauTuVan
 ;
 
-INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (1,2,'Product Owner Master Class','Harry Phạm',5400000);
-INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (2,3,'SQL Advanced Class','Jerry Bùi',4914000);
-INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (3,1,'IT Business Analysis','Ryan Nguyễn',4000000);
-INSERT INTO ChiTietKhoaHocThuocYCTV(MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (4,2,'Product Owner Master Class','Harry Phạm',5400000);
--- SELECT * FROM YeuCauTuVan
+INSERT INTO ChiTietKhoaHocThuocYCTV(ID,MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (1,1,2,'Product Owner Master Class','Harry Phạm',5400000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(ID,MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (2,2,3,'SQL Advanced Class','Jerry Bùi',4914000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(ID,MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (3,3,1,'IT Business Analysis','Ryan Nguyễn',4000000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(ID,MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (4,4,2,'Product Owner Master Class','Harry Phạm',5400000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(ID,MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (5,5,2,'Product Owner Master Class','Harry Phạm',5400000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(ID,MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (6,6,2,'Product Owner Master Class','Harry Phạm',5400000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(ID,MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (7,7,2,'Product Owner Master Class','Harry Phạm',5400000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(ID,MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (8,8,2,'Product Owner Master Class','Harry Phạm',5400000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(ID,MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (9,9,2,'Product Owner Master Class','Harry Phạm',5400000);
+INSERT INTO ChiTietKhoaHocThuocYCTV(ID,MaTuVan,MaKhoaHoc,TenKhoaHoc,GiangVien,GiaTien) VALUES (10,10,2,'Product Owner Master Class','Harry Phạm',5400000);
+
+-- SELECT * FROM ChiTietKhoaHocThuocYCTV
 ;
 
 INSERT INTO TBL_Lead(HoTenLead,GioiTinhLead,NgaySinhLead,SoDienThoaiLead,EmailLead,MaNgheNghiep,MaNVPhuTrachLead,TrangThaiLead,LyDoTrangThaiLead,NguonLead,GhiChuLead,LeadTuKHCu,TaoVaoLuc,TaoBoi,ChinhSuaLanCuoiVaoLuc,ChinhSuaLanCuoiBoi) VALUES ('Ngô Thị Kim Cương','Nữ','1991-06-30','0777007007','kimcuongngothi@gmail.com',1,10,'Đang tư vấn',NULL,'LinkedIn',NULL,NULL,'2023-07-01 08:00:00',1,'2023-07-01 10:30:00',10);
