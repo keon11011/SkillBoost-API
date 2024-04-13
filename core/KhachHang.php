@@ -164,6 +164,85 @@ class KhachHang{
     
         return false;
     }
+
+    public function update() {
+        // Create query
+        $query = "UPDATE " . $this->table . "
+                  SET
+                    HoTenKH = :HoTenKH,
+                    GioiTinhKH = :GioiTinhKH,
+                    NgaySinhKH = :NgaySinhKH,
+                    SoDienThoaiKH = :SoDienThoaiKH,
+                    EmailKH = :EmailKH,
+                    MaNgheNghiep = :MaNgheNghiep,
+                    MaNVPhuTrachKH = :MaNVPhuTrachKH,
+                    TenNVPhuTrachKH = :TenNVPhuTrachKH,
+                    TrangThaiKH = :TrangThaiKH,
+                    LyDoTrangThaiKH = :LyDoTrangThaiKH,
+                    GhiChuKH = :GhiChuKH,
+                    ChuyenDoiTuMaLead = :ChuyenDoiTuMaLead,
+                    ChinhSuaLanCuoiVaoLuc = :ChinhSuaLanCuoiVaoLuc,
+                    ChinhSuaLanCuoiBoi = :ChinhSuaLanCuoiBoi
+                  WHERE
+                    MaKH = :MaKH";
+        
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+        
+        // Clean data
+        $this->HoTenKH = htmlspecialchars(strip_tags($this->HoTenKH));
+        $this->GioiTinhKH = htmlspecialchars(strip_tags($this->GioiTinhKH));
+        $this->NgaySinhKH = date('Y-m-d', strtotime($this->NgaySinhKH));
+        $this->SoDienThoaiKH = htmlspecialchars(strip_tags($this->SoDienThoaiKH));
+        $this->EmailKH = htmlspecialchars(strip_tags($this->EmailKH));
+        $this->MaNgheNghiep = htmlspecialchars(strip_tags($this->MaNgheNghiep));
+        $this->MaNVPhuTrachKH = htmlspecialchars(strip_tags($this->MaNVPhuTrachKH));
+        $this->TenNVPhuTrachKH = htmlspecialchars(strip_tags($this->TenNVPhuTrachKH));
+        $this->TrangThaiKH = htmlspecialchars(strip_tags($this->TrangThaiKH));
+        // dòng này assigned null
+        if ($this->LyDoTrangThaiKH !== null) {
+            $this->LyDoTrangThaiKH = htmlspecialchars(strip_tags($this->LyDoTrangThaiKH));
+        }
+        // dòng này assigned null
+        if ($this->GhiChuKH !== null) {
+            $this->GhiChuKH = htmlspecialchars(strip_tags($this->GhiChuKH));
+        }
+        // dòng này assigned null
+        if ($this->ChuyenDoiTuMaLead !== null) {
+            $this->ChuyenDoiTuMaLead = htmlspecialchars(strip_tags($this->ChuyenDoiTuMaLead));
+        }   
+        $this->ChinhSuaLanCuoiVaoLuc = date('Y-m-d H:i:s', strtotime($this->ChinhSuaLanCuoiVaoLuc));
+        $this->ChinhSuaLanCuoiBoi = htmlspecialchars(strip_tags($this->ChinhSuaLanCuoiBoi));
+        $this->MaKH = htmlspecialchars(strip_tags($this->MaKH));
+    
+        // Bind data
+        $stmt->bindParam(':HoTenKH', $this->HoTenKH);
+        $stmt->bindParam(':GioiTinhKH', $this->GioiTinhKH);
+        $stmt->bindParam(':NgaySinhKH', $this->NgaySinhKH);
+        $stmt->bindParam(':SoDienThoaiKH', $this->SoDienThoaiKH);
+        $stmt->bindParam(':EmailKH', $this->EmailKH);
+        $stmt->bindParam(':MaNgheNghiep', $this->MaNgheNghiep);
+        $stmt->bindParam(':MaNVPhuTrachKH', $this->MaNVPhuTrachKH);
+        $stmt->bindParam(':TenNVPhuTrachKH', $this->TenNVPhuTrachKH);
+        $stmt->bindParam(':TrangThaiKH', $this->TrangThaiKH);
+        $stmt->bindParam(':LyDoTrangThaiKH', $this->LyDoTrangThaiKH);
+        $stmt->bindParam(':GhiChuKH', $this->GhiChuKH);
+        $stmt->bindParam(':ChuyenDoiTuMaLead', $this->ChuyenDoiTuMaLead);
+        $stmt->bindParam(':ChinhSuaLanCuoiVaoLuc', $this->ChinhSuaLanCuoiVaoLuc);
+        $stmt->bindParam(':ChinhSuaLanCuoiBoi', $this->ChinhSuaLanCuoiBoi);
+        $stmt->bindParam(':MaKH', $this->MaKH);
+    
+        // Execute query
+        if($stmt->execute()) {
+            return true;
+        }
+    
+        // Print error if something goes wrong
+        printf("Error: %s.\n", $stmt->error);
+        
+        return false;
+    }
+    
     
     public function delete(){
         // Create query
