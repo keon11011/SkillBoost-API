@@ -68,7 +68,7 @@ CREATE TABLE TBL_Lead(
   ,NgaySinhLead          DATE  NOT NULL
   ,SoDienThoaiLead       VARCHAR(10) NOT NULL
   ,EmailLead             VARCHAR(255) NOT NULL
-  ,MaNgheNghiep          INT NOT NULL
+  ,MaNgheNghiep          INT
   ,MaNVPhuTrachLead      VARCHAR(255) NOT NULL
   ,TrangThaiLead         VARCHAR(255) NOT NULL
   ,LyDoTrangThaiLead     VARCHAR(255)

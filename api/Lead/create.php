@@ -17,7 +17,7 @@ $lead = new Lead($db);
 $data = json_decode(file_get_contents("php://input"));
 
 // Check if required data is set
-if (!isset($data->HoTenLead, $data->GioiTinhLead, $data->NgaySinhLead, $data->SoDienThoaiLead, $data->EmailLead, $data->MaNgheNghiep, $data->NguonLead)) {
+if (!isset($data->HoTenLead, $data->GioiTinhLead, $data->NgaySinhLead, $data->SoDienThoaiLead, $data->EmailLead)) {
     echo json_encode(array('message' => 'Missing required data.'));
     exit;
 }
@@ -28,11 +28,11 @@ $lead->GioiTinhLead = $data->GioiTinhLead;
 $lead->NgaySinhLead = $data->NgaySinhLead;
 $lead->SoDienThoaiLead = $data->SoDienThoaiLead;
 $lead->EmailLead = $data->EmailLead;
-$lead->MaNgheNghiep = $data->MaNgheNghiep;
+$lead->MaNgheNghiep = 5;
 $lead->MaNVPhuTrachLead = 3; // Đang fix cứng
 $lead->TrangThaiLead = 'Đang tư vấn'; // Đang fix cứng
 $lead->LyDoTrangThaiLead = isset($data->LyDoTrangThaiLead) ? $data->LyDoTrangThaiLead : null;
-$lead->NguonLead = $data->NguonLead;
+$lead->NguonLead = isset($data->NguonLead) ? $data->NguonLead : "Website";
 $lead->GhiChuLead = isset($data->GhiChuLead) ? $data->GhiChuLead : null;
 $lead->LeadTuKHCu = isset($data->LeadTuKHCu) ? $data->LeadTuKHCu : null;
 $lead->TaoVaoLuc = date('Y-m-d H:i:s');
