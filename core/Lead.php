@@ -29,7 +29,7 @@ class Lead{
 
     public function read() {
         try {
-            $query = "SELECT * FROM " . $this->table . " WHERE TrangThaiLead != 'Xóa mềm'";
+            $query = "SELECT * FROM " . $this->table . " WHERE TrangThaiLead != 'Xóa mềm' ORDER BY MaLead DESC";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
