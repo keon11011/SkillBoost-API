@@ -1,8 +1,10 @@
 /* TẠO DATABASE SkillBoost */
+/*
 CREATE DATABASE SkillBoost
 
 ; 
 USE SkillBoost
+*/
 
 /*USE CASE 1*/
 /* TẠO TABLE NHAN_VIEN */
