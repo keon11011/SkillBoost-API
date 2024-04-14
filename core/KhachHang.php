@@ -29,7 +29,7 @@ class KhachHang{
 
     public function read() {
         try {
-            $query = "SELECT * FROM " . $this->table . " WHERE TrangThaiKH != 'Xóa mềm'";
+            $query = "SELECT * FROM " . $this->table . " WHERE TrangThaiKH != 'Xóa mềm' ORDER BY MaKH DESC";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
